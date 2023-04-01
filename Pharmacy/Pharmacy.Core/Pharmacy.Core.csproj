@@ -1,0 +1,55 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="IRepository\**" />
+    <Compile Remove="IService\**" />
+    <EmbeddedResource Remove="IRepository\**" />
+    <EmbeddedResource Remove="IService\**" />
+    <None Remove="IRepository\**" />
+    <None Remove="IService\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="IRepository\IApplicationUserRepository.cs" />
+    <Compile Include="IRepository\IBagRepository.cs" />
+    <Compile Include="IRepository\IBranchRepository.cs" />
+    <Compile Include="IRepository\ICategoryRepository.cs" />
+    <Compile Include="IRepository\ICompanyOfOriginRepository.cs" />
+    <Compile Include="IRepository\IContactURepository.cs" />
+    <Compile Include="IRepository\IDeliveryLocationRepository.cs" />
+    <Compile Include="IRepository\IMessageRepository.cs" />
+    <Compile Include="IRepository\IOrderLogRepository.cs" />
+    <Compile Include="IRepository\IOrderRepository.cs" />
+    <Compile Include="IRepository\IProductRepository.cs" />
+    <Compile Include="IRepository\IReportRepository.cs" />
+    <Compile Include="IRepository\ISharedRepository.cs" />
+    <Compile Include="IRepository\ISliderRepository.cs" />
+    <Compile Include="IRepository\IStockRepository.cs" />
+    <Compile Include="IRepository\ITestimonialRepository.cs" />
+    <Compile Include="IService\IApplicationUserService.cs" />
+    <Compile Include="IService\IBagService.cs" />
+    <Compile Include="IService\IBranchService.cs" />
+    <Compile Include="IService\ICategoryService.cs" />
+    <Compile Include="IService\ICompanyOfOriginService.cs" />
+    <Compile Include="IService\IContactUService.cs" />
+    <Compile Include="IService\IDeliveryLocationService.cs" />
+    <Compile Include="IService\IMessageService.cs" />
+    <Compile Include="IService\IOrderLogService.cs" />
+    <Compile Include="IService\IOrderService.cs" />
+    <Compile Include="IService\IProductService.cs" />
+    <Compile Include="IService\IReportService.cs" />
+    <Compile Include="IService\ISharedService.cs" />
+    <Compile Include="IService\ISliderService.cs" />
+    <Compile Include="IService\IStockService.cs" />
+    <Compile Include="IService\ITestimonialService.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="NetTopologySuite" Version="2.3.0" />
+  </ItemGroup>
+
+</Project>
