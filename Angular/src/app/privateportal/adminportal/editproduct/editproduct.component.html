@@ -1,0 +1,81 @@
+
+
+
+<div class="row">
+  <div class="col-md-4"></div>
+  <div class="col-md-4">
+    <img style="height: 10pc; width: 10pc;" class="center rounded float-center th img-circle" [src]="URLForImage">
+    <br>
+    <input type="file" name="image" (change)="fileProgress($event)" style="  margin-top: 5px;margin-left: 28px;"/> <br>
+<button mat-button color="accent" (click) = 'UpdateProductImage()' [disabled]="IMGProduct.invalid" style="margin-left: 28px;">Submit</button>
+
+
+  </div>
+  <div class="col-md-4"></div>
+ </div>
+ 
+
+<hr>
+<form method="post" [formGroup]='OurservicesadminService.FormProductUpdate' (submit)='Submit()'>
+  <mat-form-field appearance="fill" hidden>
+    <input type="number" matInput placeholder="Id" formControlName="Id" required>
+  </mat-form-field>
+ <div class="row">
+ <div class="col-md-6">
+  <mat-form-field appearance="fill" class="col-md-6">
+    <mat-label>Enter your Name</mat-label>
+    <input matInput placeholder="Name" formControlName="Name" required>
+    <mat-error *ngIf="OurservicesadminService.FormProductUpdate.controls.Name.hasError('required')">Name Is Required</mat-error>
+  </mat-form-field>
+ </div>
+ <div class="col-md-6">
+  <mat-form-field appearance="fill" class="col-md-6">
+    <mat-label>Enter your CompanyOfOriginId</mat-label>
+    <input type="number" matInput placeholder="CompanyOfOriginId" formControlName="CompanyOfOriginId" required>
+    <mat-error *ngIf="OurservicesadminService.FormProductUpdate.controls.Name.hasError('required')">CompanyOfOriginId Is Required</mat-error>
+  </mat-form-field>
+ </div>
+ </div>
+
+
+<div class="row">
+ <div class="col-md-6">
+  <mat-form-field appearance="fill" class="col-md-6">
+    <mat-label>Enter your Price</mat-label>
+    <input type="number" matInput placeholder="Price" formControlName="Price" required>
+    <mat-error *ngIf="OurservicesadminService.FormProductUpdate.controls.Price.hasError('required')">Price Is Required</mat-error>
+  </mat-form-field>
+ </div>
+ <div class="col-md-6">
+  <mat-form-field appearance="fill" class="col-md-6">
+    <mat-label>Enter your Description</mat-label>
+    <input matInput placeholder="Description" formControlName="Description" required>
+    <mat-error *ngIf="OurservicesadminService.FormProductUpdate.controls.Description.hasError('required')">Description Is Required</mat-error>
+  </mat-form-field>
+</div>
+</div>
+
+
+<div class="row">
+ <div class="col-md-6">
+  <mat-form-field appearance="fill" class="col-md-6">
+    <mat-label>Enter your CategoryId</mat-label>
+    <input type="number" matInput placeholder="CategoryId" formControlName="CategoryId" required>
+    <mat-error *ngIf="OurservicesadminService.FormProductUpdate.controls.CategoryId.hasError('required')">CategoryId Is Required</mat-error>
+  </mat-form-field>
+ </div>
+ <div class="col-md-6">
+
+</div>
+</div>
+<div class="row">
+ <div class="col-md-6">
+  <button mat-button color="accent" type="submit" [disabled]="OurservicesadminService.FormProductUpdate.invalid">Submit</button>
+
+ </div>
+ <div class="col-md-6">
+
+</div>
+</div>
+
+</form>

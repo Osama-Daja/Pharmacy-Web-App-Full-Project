@@ -1,0 +1,36 @@
+
+
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="">
+                <div class="card-body">
+                    
+    
+                    <div class="hori-timeline" dir="ltr">
+                        <ul class="list-inline events">
+                            <li class="list-inline-item event-list" *ngFor='let O of Bag.Bag.orderLog'>
+                                <div class="px-4">
+                                    <div class="event-date bg-soft-primary text-primary">{{O.orderLogCurrentDate | date: 'hh:mm'}}</div>
+                                    <h5 class="font-size-16" *ngIf='O.status == 1'>
+                                        <i class="fas fa-shuttle-van" style="color: blue;"></i>
+                                    </h5>
+                                    <h5 class="font-size-16" *ngIf='O.status == 2'>
+                                        <i class="fas fa-window-close" style="color: red;"></i>
+                                    </h5>
+                                    <h5 class="font-size-16" *ngIf='O.status == 3'>
+                                        <i class="fas fa-check-circle" style="color: green;"></i>
+                                    </h5>
+                                    <h5 class="font-size-16" *ngIf='O.status == 4'>
+                                        <i class="fas fa-check-double" style="color: greenyellow;"></i>
+                                    </h5>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!-- end card -->
+        </div>
+    </div>

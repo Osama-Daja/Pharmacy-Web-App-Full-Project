@@ -1,0 +1,281 @@
+
+<div class="warpper">
+  <input class="radio" id="one" name="group" type="radio" checked>
+  <input class="radio" id="two" name="group" type="radio">
+  <input class="radio" id="three" name="group" type="radio">
+  <div class="tabs">
+    <label class="tab" id="tab1" for="one">{{MainPortal.Lang['ActiveOrders']}}</label>
+    <label class="tab" id="tab2" for="two">{{MainPortal.Lang['TrendingProducts']}}</label>
+    <label class="tab" id="tab3" for="three">{{MainPortal.Lang['BestBranch']}}</label>
+  </div>
+  <div class="tab-panels">
+    <div class="tab-panel" id="tab-panel1">
+      <div class="row">
+        
+          <mat-form-field appearance="fill" class="col-lg-4 col-md-6 col-sm-12 ">
+            <mat-label>Select Branch</mat-label>
+            <mat-select [formControl]="BranchId">
+              <mat-option *ngFor="let B of OurservicesadminService.ListBranch" value="{{B.id}}">{{B.name}} |
+                {{B.description}}
+              </mat-option>
+            </mat-select>
+            <mat-error *ngIf="BranchId.hasError('required')">Branch Is Required</mat-error>
+          </mat-form-field>
+        
+          <button mat-button color="accent" style="height: 36px; bottom: -17px;" (click)='GetActiveDeliveries()'
+            [disabled]="BranchId.invalid">Search</button>
+        
+      </div>
+
+      <div class="row">
+        <div class="col-md-12">
+          <div class="table-responsive-lg table-responsive-md table-responsive-sm">
+
+            <table class="table table-sm table-hover mytable">
+              <thead class="thead-light">
+                <tr>
+
+                  <th>
+    
+                    {{MainPortal.Lang['name']}}
+    
+                  </th>
+    
+                  <th>
+    
+                     {{MainPortal.Lang['PhoneNumber']}}
+    
+                  </th>
+    
+                  <th>
+    
+                    {{MainPortal.Lang['Location Order']}}
+    
+                  </th>
+    
+                  <th>
+    
+                    {{MainPortal.Lang['Total Price']}}
+    
+                  </th>
+    
+                  <th>
+    
+                    {{MainPortal.Lang['All Orders']}}
+    
+                  </th>
+    
+                </tr>
+              </thead>
+              <tbody>
+
+
+                <tr *ngFor="let V of OurservicesadminService.HomeListActiveOrders">
+                  <td>
+                    {{V.nickName}}
+                  </td>
+                  <td>
+                    {{V.phoneNumber}}
+                  </td>
+                  <td>
+                    <a style="margin: auto" href="https://www.google.jo/maps/dir//{{V.longitude}},{{V.latitude}}"
+                      target="_blank">
+                      <i class="fas fa-map-marked"></i>
+                    </a>
+                  </td>
+                  <td>
+                    {{V.totalPrice}} $
+                  </td>
+                  <td>
+                    <button (click)='Details(V)' class="green fluid ui button">
+                      <i class="fas fa-luggage-cart"></i>
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="tab-panel" id="tab-panel2">
+      <div class="row">
+        
+          <mat-form-field class="example-form-field" appearance="fill" class="col-lg-4 col-md-6 col-sm-12 ">
+            <mat-label>First campaign</mat-label>
+            <mat-date-range-input [formGroup]="SearchDate" [rangePicker]="BirthDay">
+              <input matStartDate placeholder="Start date" formControlName="start">
+              <input matEndDate placeholder="End date" formControlName="end">
+            </mat-date-range-input>
+            <mat-datepicker-toggle matSuffix [for]="BirthDay"></mat-datepicker-toggle>
+            <mat-date-range-picker #BirthDay></mat-date-range-picker>
+          </mat-form-field>
+        
+          <button mat-button color="accent" style="height: 36px; bottom: -17px;" (click)='TrendingProductByDate()'
+            [disabled]="SearchDate.invalid">Search</button>
+       
+      </div>
+
+      <div class="row">
+        <div class="col-md-12">
+          <div class="table-responsive-lg table-responsive-md table-responsive-sm">
+
+            <table class="table table-sm table-hover mytable">
+              <thead class="thead-light">
+                <tr>
+
+                  <th>
+    
+                    {{MainPortal.Lang['name']}}
+    
+                  </th>
+    
+                  <th>
+    
+                     {{MainPortal.Lang['Price']}}
+    
+                  </th>
+    
+                  <th>
+    
+                    {{MainPortal.Lang['description']}}
+    
+                  </th>
+    
+                  <th>
+    
+                     {{MainPortal.Lang['Category']}}
+    
+                  </th>
+    
+                  <th>
+    
+                     {{MainPortal.Lang['Category Description']}}
+    
+                  </th>
+    
+                </tr>
+              </thead>
+              <tbody>
+
+
+                <tr *ngFor="let V of OurservicesadminService.HomeListProduct">
+                  <td>
+                    <img style="height: 30px;width: 30px;" [src]="OurservicesadminService.URLIMG + V.image">
+                    {{V.name}}
+                  </td>
+                  <td>
+                    {{V.price}} $
+                  </td>
+                  <td>
+                    {{V.description}}
+                  </td>
+                  <td>
+                    <img style="height: 30px;width: 30px;" [src]="OurservicesadminService.URLIMG + V.categoryImage">
+                    {{V.categoryName}}
+                  </td>
+                  <td>
+                    {{V.categoryDescription}}
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="tab-panel" id="tab-panel3">
+      <div class="row">
+        
+          <mat-form-field class="example-form-field" appearance="fill"  class="col-lg-4 col-md-6 col-sm-12 ">
+            <mat-label>First campaign</mat-label>
+            <mat-date-range-input [formGroup]="SearchDateBranch" [rangePicker]="Date">
+              <input matStartDate placeholder="Start date" formControlName="start">
+              <input matEndDate placeholder="End date" formControlName="end">
+            </mat-date-range-input>
+            <mat-datepicker-toggle matSuffix [for]="Date"></mat-datepicker-toggle>
+            <mat-date-range-picker #Date></mat-date-range-picker>
+          </mat-form-field>
+       
+          <button mat-button color="accent" style="height: 36px; bottom: -17px;" (click)='TrendingBranchByDateAdmin()'
+            [disabled]="SearchDateBranch.invalid">Search</button>
+        
+      </div>
+
+      <div class="row">
+        <div class="col-md-12">
+          <div class="table-responsive-lg table-responsive-md table-responsive-sm">
+
+            <table class="table table-sm table-hover mytable">
+              <thead class="thead-light">
+                <tr>
+
+                  <th>
+    
+                    {{MainPortal.Lang['name']}}
+    
+                  </th>
+    
+                  <th>
+    
+                     {{MainPortal.Lang['description']}}
+    
+                  </th>
+    
+                  <th>
+    
+                    {{MainPortal.Lang['Location']}}
+    
+                  </th>
+    
+                  <th>
+    
+                     {{MainPortal.Lang['Work Hours']}}
+    
+                  </th>
+    
+                  <th>
+    
+                    {{MainPortal.Lang['quantity']}}
+    
+                  </th>
+    
+                </tr>
+              </thead>
+              <tbody>
+
+
+                <tr *ngFor="let V of OurservicesadminService.HomeListBranches">
+                  <td>
+                    {{V.name}}
+                  </td>
+                  <td>
+                    {{V.description}}
+                  </td>
+                  <td>
+                    <a style="margin: auto" href="https://www.google.jo/maps/dir//{{V.longitude}},{{V.latitude}}"
+                      target="_blank">
+                      <i class="fas fa-map-marked"></i>
+                    </a>
+                  </td>
+                  <td *ngIf='V.startWorkHours == null'>
+                    24 Hour
+                  </td>
+                  <td *ngIf='V.endWorkHours != null'>
+                    24 Hour
+                  </td>
+                  <td>
+                    {{V.quantity}}
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,12 @@
+.row{
+    margin-bottom: 3rem;
+}
+button{
+    float: right;
+    margin-right: 1rem;
+}
+
+p{
+    font-size: 1.3rem;
+    margin-left: 1.2rem;
+}

@@ -1,0 +1,67 @@
+:root {
+    /* --main-color: #dd2f6e; */
+    --pink: #f13140;
+    --color-dark: #1d2231;
+    --gray: #eee;
+    --white: #fff;
+    --green: #85ce36;
+    --blue:#31588d;
+    --table-header:#e72d3c;
+  }
+.mytable {
+    border-radius: 10px;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    margin-top: 10px;
+    padding: 10px;    
+    border-radius: 1em;
+    overflow: hidden;
+    text-align: center;
+    box-shadow: 0px 3px 0px #ccc;
+
+}
+
+
+    .mytable thead, .mytable thead tr, .mytable thead tr th {
+        background: var(--table-header) !important;
+        color: #fff !important;
+        padding-top: 2px;
+        padding-bottom: 2px;
+        line-height: 2.5;
+        vertical-align: middle;
+    }
+
+    .mytable tbody{
+        background-color: #fff;        
+        color:var(--pink);
+    }
+    .mytable td {
+        overflow: hidden;
+        max-height: 60px;
+        min-width: 70px;
+        /* height: 60px; */
+        display: table-cell;
+        vertical-align: middle;
+        
+    }
+    .mytable td i{
+        cursor: pointer;
+    }
+
+    .mytable tbody tr:hover {
+        background-color: var(--gray);
+        color:var(--pink) ;       
+        cursor: pointer;
+    }
+
+    .fa-edit{
+        color:var(--green)
+    }
+
+    .fa-trash-alt{
+        color:var(--pink)
+    }
+
+    form{
+        width: 100%;
+    }

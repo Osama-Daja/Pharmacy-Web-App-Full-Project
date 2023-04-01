@@ -1,0 +1,85 @@
+
+
+<div class="row">
+   
+        <mat-form-field class="example-form-field" appearance="fill" class="col-lg-4 col-md-6 col-sm-12 ">
+            <mat-label>First campaign</mat-label>
+            <mat-date-range-input
+              [formGroup]="SearchDate"
+              [rangePicker]="Date"
+              >
+              <input matStartDate placeholder="Start date" formControlName="start">
+              <input matEndDate placeholder="End date" formControlName="end">
+            </mat-date-range-input>
+            <mat-datepicker-toggle matSuffix [for]="Date"></mat-datepicker-toggle>
+            <mat-date-range-picker #Date></mat-date-range-picker>
+          </mat-form-field>        
+          <div class="col-md-3">
+        <button mat-button style="bottom: -18px;"  color="accent" (click) ='SearchOrdersByDateCustomer()' [disabled]="SearchDate.invalid">Search</button>
+
+          </div>
+   
+</div>
+
+  <hr>
+
+
+  <div class="row">
+    <div class="col-md-12">
+      <div class="table-responsive-lg table-responsive-md table-responsive-sm">
+  
+        <table class="table table-sm table-hover mytable">
+          <thead class="thead-light">
+            <tr>
+              <th>
+                {{MainPortal.Lang['Status']}}
+              </th>
+              <th>
+                
+                {{MainPortal.Lang['Current Date']}}
+              </th>
+              <th>
+                
+                {{MainPortal.Lang['Total Price']}}
+              </th>
+              <th>
+                
+                {{MainPortal.Lang['Postion']}}
+              </th>
+              <th>
+                &nbsp;
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let Bag of OurservicesadminService.ListOfBags">
+              <td>
+                <i class="fas fa-shuttle-van" style="color: blue;" *ngIf = 'Bag.status == 1'></i>
+                <i class="fas fa-window-close" style="color: red;" *ngIf = 'Bag.status == 2'></i>
+                <i class="fas fa-check-circle" style="color: green;" *ngIf = 'Bag.status == 3'></i>
+                <i class="fas fa-check-double" style="color: greenyellow;" *ngIf = 'Bag.status == 4'></i>
+              </td>
+              <td>
+                {{Bag.currentDate | date: 'dd/MM/yyyy'}}
+              </td>
+              <td>
+                {{Bag.totalPrice}} $
+              </td>
+              <td>
+                <a id="a"
+                    href="https://www.google.jo/maps/dir//{{Bag.longitude}},{{Bag.latitude}}"
+                    target="_blanck">
+                    <i class="fas fa-map-marker-alt"></i>
+                </a>
+              </td>
+              <td>
+                <i class="far fa-calendar" (click)='ShowOrderLog(Bag)'></i> |
+                <i class="fas fa-toolbox" (click)='ShowProduct(Bag)'></i>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+  
+      </div>
+    </div>
+  </div>

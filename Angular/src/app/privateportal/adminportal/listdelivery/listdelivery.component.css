@@ -1,0 +1,56 @@
+.warpper{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .tab{
+    cursor: pointer;
+    padding:10px 20px;
+    margin:0px 2px;
+    background:#e72d3c;
+    display:inline-block;
+    color:#fff;
+    border-radius:3px 3px 0px 0px;
+    box-shadow: 0 0.5rem 0.8rem #00000080;
+  }
+  .tab-panels{
+    background:#fffffff6;
+    box-shadow: 0 1px 1px #00000080;
+    min-height:200px;
+    width:100%;
+   
+    border-radius:3px;
+    overflow:hidden;
+    padding:1rem;  
+  }
+  .tab-panel{
+    display:none;
+    animation: fadein .8s;
+  }
+  @keyframes fadein {
+      from {
+          opacity:0;
+      }
+      to {
+          opacity:1;
+      }
+  }
+  .tab-panel-title{
+    font-size:1.5em;
+    font-weight:bold
+  }
+  .radio{
+    display:none;
+  }
+  #one:checked ~ .tab-panels #tab-panel1,
+  #two:checked ~ .tab-panels #tab-panel2,
+  #three:checked ~ .tab-panels #tab-panel3{
+    display:block
+  }
+  #one:checked ~ .tabs #tab1,
+  #two:checked ~ .tabs #tab2,
+  #three:checked ~ .tabs #tab3{
+    background:#fffffff6;
+    color:#e72d3c;
+    border-top: 3px solid #e72d3c;
+  }

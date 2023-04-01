@@ -1,0 +1,129 @@
+
+
+<div class="row">
+    <h3> Customer Information</h3>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="table-responsive-lg table-responsive-md table-responsive-sm">
+
+            <table class="table table-sm table-hover mytable">
+                <thead class="thead-light">
+                    <tr>
+                        <th>
+                            NickName
+                           
+                        </th>
+                        <th>
+                            Email
+                           
+                        </th>
+                        <th>
+                            Text
+                           
+                        </th>
+                        <th>
+                            
+                            PhoneNumber
+                        </th>
+                        <th>
+                            Rating
+                            
+                        </th>
+
+                    </tr>
+                </thead>
+                <tbody>
+
+
+                    <tr >
+                        <!-- <td>
+                {{report.image}}
+              </td> -->
+                        <td>
+                            {{adminService.ReportDetails.nickName}}
+                        </td>
+                        <td>
+                            {{adminService.ReportDetails.email}}
+                        </td>
+                        <td>
+                            {{adminService.ReportDetails.text}}
+                        </td>
+                        <td>
+                            {{adminService.ReportDetails.phoneNumber}}
+                        </td>
+                        <td>
+                            {{adminService.ReportDetails.rating}}
+                        </td>
+
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        &nbsp;
+    </div>
+</div>
+
+<div class="row">
+    <h3> Order Deatails</h3>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="table-responsive-lg table-responsive-md table-responsive-sm">
+
+            <table class="table table-sm table-hover mytable">
+                <thead class="thead-light">
+                    <tr>
+                        <th>
+                            Product
+                        </th>
+                        <th>
+                            Produce Date
+                        </th>
+                        <th>
+                            Expired Date
+                        </th>
+                        <th>
+                            Quantity
+                        </th>
+                        <th>
+                            Rating
+                        </th>
+
+                    </tr>
+                </thead>
+                <tbody>
+
+
+                    <tr >
+                        <td>
+                            {{adminService.ReportDetails.productName}}
+                        </td>
+                        <td>
+                            {{adminService.ReportDetails.produceDate}}
+                        </td>
+                        <td>
+                            {{adminService.ReportDetails.expiredDate}}
+                        </td>
+                        <td>
+                            {{adminService.ReportDetails.quantity}}
+                        </td>
+                        <td>
+                            {{adminService.ReportDetails.rating}}
+                        </td>
+
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+</div>

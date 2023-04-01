@@ -1,0 +1,214 @@
+* {
+    margin: auto;
+    padding: 0px;
+}
+body, .mat-typography{
+    margin:  auto 0 ;
+    padding: auto;
+}
+.row{
+    margin: auto;
+}
+.IMG {
+    min-height: 100%;
+    min-width: 1024px;
+    width: 100%;
+    height: auto;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+
+/*Navbar*/
+.MyNav {
+    position: fixed;
+    width: 100%;
+    top: 0%;
+    color: white;
+    filter: grayscale(30%);
+    justify-content: center;
+}
+
+    .MyNav .navCon {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .MyNav .Logo {
+        display: flex;
+        flex-direction: column;
+        align-content: center;
+        justify-content: center;
+        align-items: center;
+    }
+
+        .MyNav .Logo .Img {
+            height: 40px;
+            width: 50px;
+            border-radius: 1pc;
+        }
+
+        .MyNav .Logo .label {
+            font-size: 2pc;
+            margin-left: 1pc;
+        }
+
+    .MyNav .Label {
+        font-family: Handover Sans;
+        font-size: 2pc;
+    }
+
+    .MyNav .ALLLinks {
+        display: flex;
+        margin-right: 2pc;
+        margin-left: 2pc;
+    }
+
+        .MyNav .ALLLinks .Links {
+            font-weight: bold;
+            font-size: 0.9pc;
+        }
+
+            .MyNav .ALLLinks .Links a:link, a:visited {
+                color: #ffffff;
+                padding: 14px 25px;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+            }
+
+            .MyNav .ALLLinks .Links a:hover, a:active {
+                font-weight: bold;
+                font-size: 1.5pc;
+            }
+
+
+
+
+
+
+/*form*/
+.Fromcol_4 {
+    background: #ffffff9e;
+    margin-top: 16%;
+    text-align: center;
+    box-shadow: 0 0 20px 0 rgb(217 217 217);
+    margin-bottom: 10pc;
+}
+
+.Fromcol_4 .img {
+    background: #8586883d;
+    height: 100px;
+    width: 100px;
+    border-radius: 1pc;
+}
+
+h3 {
+    font-weight: bold;
+    font-size: 25px;
+}
+
+.TXTBox {
+    width: 70%;
+    height: 30px;
+    padding-left: 10px;
+    font-size: 15px;
+    margin-right: 10px;
+    border: 1px solid #065770;
+    margin-top: 30px;
+    border-radius: 7px;
+    width: 100%;
+}
+
+    .TXTBox:hover {
+        background: #fdc1c1;
+    }
+
+
+textarea {
+    width: 100%;
+    margin: 0px;
+    width: 698px;
+    height: 85px;
+}
+
+.btn {
+    display: inline-block;
+    background-color: #5a1d1dc7;
+    color: #fff;
+    padding: 8px 30px;
+    margin: 30px 0;
+    border-radius: 30px;
+    transition: 0.5s;
+    border: none;
+    box-shadow: 0 0 9px 0px #00000096;
+    width: 140px;
+}
+
+    .btn:hover {
+        box-shadow: 0 0 9px 0px #00000096;
+        background: #ff0000;
+    }
+
+
+
+
+
+
+
+    /*footer*/
+footer {
+    position: fixed;
+    bottom: 0;
+    background: rgb(72 20 20 / 32%);
+    width: 100%;
+    text-align: center;
+    font-size: 1pc;
+    font-weight: bold;
+    color: #ff003e;
+    font-weight: bold;
+    font-size: 1pc;
+    margin-top:0 !important;
+}
+
+.ContactUs-logo img {
+    width: 30px;
+    height: 30px;
+    animation-name: AnimationBorder;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+}
+
+@keyframes AnimationBorder {
+    0% {
+        border-radius: 0pc;
+    }
+
+    25% {
+        border-radius: 1.5pc;
+    }
+
+    50% {
+        border-radius: 3pc;
+    }
+
+    75% {
+        border-radius: 1.5pc;
+    }
+
+    100% {
+        border-radius: 0pc;
+    }
+}
+
+.mat-form-field{
+    width: 70%;
+}
+
+@media screen and (max-width:768px) {
+    .mat-form-field{
+        width: 85%;
+    }
+}

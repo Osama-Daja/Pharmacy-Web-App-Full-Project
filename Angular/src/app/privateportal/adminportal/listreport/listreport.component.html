@@ -1,0 +1,74 @@
+
+<mat-form-field class="example-form-field" appearance="fill" class="col-lg-4 col-md-6 col-sm-12 ">
+    <mat-label>First campaign</mat-label>
+    <mat-date-range-input
+      [formGroup]="SearchReport"
+      [rangePicker]="BirthDay"
+      >
+      <input matStartDate placeholder="Start date" formControlName="StartDate">
+      <input matEndDate placeholder="End date" formControlName="EndDate">
+    </mat-date-range-input>
+    <mat-datepicker-toggle matSuffix [for]="BirthDay"></mat-datepicker-toggle>
+    <mat-date-range-picker #BirthDay></mat-date-range-picker>
+  </mat-form-field>
+
+  <button mat-button color="accent" (click) ='SearchReportByDate()' [disabled]="SearchReport.invalid">{{MainPortal.Lang['Search']}}</button>
+
+
+  
+<div class="row">
+    <div class="col-md-12">
+      <div class="table-responsive-lg table-responsive-md table-responsive-sm">
+  
+        <table class="table table-sm table-hover mytable">
+          <thead class="thead-light">
+            <tr>
+              <th>
+               
+                {{MainPortal.Lang['NickName']}}
+              </th>
+              <th>
+               
+                {{MainPortal.Lang['Email']}}
+              </th>
+              <th>
+                
+                {{MainPortal.Lang['text']}}
+              </th>
+              <th>
+                {{MainPortal.Lang['ProductName']}}
+              </th>
+              <th>
+      
+              </th>
+             
+            </tr>
+          </thead>
+          <tbody>
+  
+           
+            <tr *ngFor="let report of adminService.ListReportDetails">
+              <td>
+                {{report.nickName}} | {{report.id}}
+              </td>
+              <td>
+                {{report.email}}
+              </td>
+              <td>
+                {{report.text}}
+              </td>
+              <td>
+                {{report.productName}}
+              </td>   
+              <td>
+                <i class="fas fa-info" (click)='ViewDetails(report.id)'></i>
+                
+              </td>
+                
+            </tr>
+          </tbody>
+        </table>
+  
+      </div>
+    </div>
+  </div>

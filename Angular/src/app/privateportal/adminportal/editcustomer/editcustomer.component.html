@@ -1,0 +1,48 @@
+<form method="post" [formGroup]='OurservicesadminService.FormCustomerUpdate' (submit)='Submit()'>
+    <mat-form-field appearance="fill" hidden>
+      <input matInput placeholder="Id" formControlName="Id" required>
+    </mat-form-field>
+  
+  <mat-form-field appearance="fill">
+    <mat-label>Enter your UserName</mat-label>
+    <input matInput placeholder="UserName" formControlName="UserName" required>
+    <mat-error *ngIf="OurservicesadminService.FormCustomerUpdate.controls.UserName.hasError('required')">UserName Is Required</mat-error>
+  </mat-form-field>
+  <br>
+  <mat-form-field appearance="fill">
+    <mat-label>Enter your Email</mat-label>
+    <input matInput placeholder="Email@Email.com" formControlName="Email" required>
+    <mat-error *ngIf="OurservicesadminService.FormCustomerUpdate.controls.Email.hasError('required')">Email Is Required</mat-error>
+    <mat-error *ngIf="OurservicesadminService.FormCustomerUpdate.controls.Email.hasError('email')">Should Be Email</mat-error>
+  </mat-form-field>
+  <br>
+  <mat-form-field appearance="fill">
+    <mat-label>Enter your PhoneNumber</mat-label>
+    <input matInput placeholder="PhoneNumber" formControlName="PhoneNumber" required>
+    <mat-error *ngIf="OurservicesadminService.FormCustomerUpdate.controls.PhoneNumber.hasError('required')">PhoneNumber Is Required</mat-error>
+  </mat-form-field>
+  <hr>
+  <mat-form-field appearance="fill">
+    <mat-label>Enter your NickName</mat-label>
+    <input matInput placeholder="NickName" formControlName="NickName" required>
+    <mat-error *ngIf="OurservicesadminService.FormCustomerUpdate.controls.NickName.hasError('required')">NickName Is Required</mat-error>
+  </mat-form-field>
+  <hr>
+  <mat-radio-group aria-label="Select an option" formControlName="Gender">
+    <mat-radio-button value='True'>Male</mat-radio-button >
+    <mat-radio-button value='False'>Female</mat-radio-button>
+    <mat-error *ngIf="OurservicesadminService.FormCustomerUpdate.controls.Gender.hasError('required')">Gender Is Required</mat-error>
+  </mat-radio-group>
+  
+  <hr>
+  <mat-form-field *ngIf= "OurservicesadminService.FormCustomerUpdate.controls.Id.value == 0" appearance="fill">
+    <mat-label>Enter your Salary</mat-label>
+    <input type="number" matInput placeholder="Salary" formControlName="Salary">
+  </mat-form-field>  
+  
+  <hr>
+  
+  <button mat-button color="accent" type="submit" [disabled]="OurservicesadminService.FormCustomerUpdate.invalid">Submit</button>
+
+  </form>
+

@@ -1,0 +1,305 @@
+
+
+
+
+<div class="warpper">
+  <input class="radio" id="two" name="group" type="radio" checked>
+  <input class="radio" id="three" name="group" type="radio">
+  <div class="tabs">
+    <label class="tab" id="tab2" for="two">Search by Phone </label>
+    <label class="tab" id="tab3" for="three">Search by Branch</label>
+  </div>
+  <div class="tab-panels">
+
+    <form method="post" [formGroup]='FormAdminRegiter' (submit)='Submit()'>
+      <mat-form-field appearance="fill" hidden>
+        <input readonly matInput placeholder="Id" formControlName="Id" required>
+      </mat-form-field>
+      <div class="row">
+        <mat-form-field appearance="fill" class=" col-md-6 col-sm-12 ">
+          <mat-label>{{MainPortal.Lang['UserName']}}</mat-label>
+          <input matInput placeholder="UserName" formControlName="UserName" required>
+          <mat-error *ngIf="FormAdminRegiter.controls.UserName.hasError('required')">UserName Is Required</mat-error>
+        </mat-form-field>
+
+        <mat-form-field *ngIf="FormAdminRegiter.controls.Id.value == 0" appearance="fill" class="col-md-6 col-sm-12 ">
+          <mat-label>{{MainPortal.Lang['Password']}}</mat-label>
+          <input type="password" matInput placeholder="Password" formControlName="Password">
+        </mat-form-field>
+      </div>
+      <div class="row">
+        <mat-form-field appearance="fill" class="col-md-6 col-sm-12 ">
+          <mat-label>{{MainPortal.Lang['Email']}}</mat-label>
+          <input matInput placeholder="Email@Email.com" formControlName="Email" required>
+          <mat-error *ngIf="FormAdminRegiter.controls.Email.hasError('required')">Email Is Required</mat-error>
+          <mat-error *ngIf="FormAdminRegiter.controls.Email.hasError('email')">Should Be Email</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class=" col-md-6 col-sm-12 ">
+          <mat-label> {{MainPortal.Lang['PhoneNumber']}}</mat-label>
+          <input matInput placeholder="PhoneNumber" formControlName="PhoneNumber" required>
+          <mat-error *ngIf="FormAdminRegiter.controls.PhoneNumber.hasError('required')">PhoneNumber Is Required
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      
+      <div class="row">
+        <mat-form-field appearance="fill" class=" col-md-6 col-sm-12 ">
+          <mat-label>{{MainPortal.Lang['NickName']}}</mat-label>
+          <input matInput placeholder="NickName" formControlName="NickName" required>
+          <mat-error *ngIf="FormAdminRegiter.controls.NickName.hasError('required')">NickName Is Required</mat-error>
+        </mat-form-field>
+
+        <mat-radio-group aria-label="Select an option" formControlName="Gender" class=" col-md-6 col-sm-12 ">
+          <div class="col-md-6">
+            <mat-radio-button value='True'>{{MainPortal.Lang['Male']}}</mat-radio-button>
+          </div>
+          <div class="col-md-6">
+            <mat-radio-button value='False'>{{MainPortal.Lang['Female']}}</mat-radio-button>
+          </div>
+
+
+          <mat-error *ngIf="FormAdminRegiter.controls.Gender.hasError('required')">{{MainPortal.Lang['Gender']}}
+          </mat-error>
+        </mat-radio-group>
+      </div>
+
+      <div class="row">
+        <mat-form-field *ngIf="FormAdminRegiter.controls.Id.value == 0" appearance="fill" class="col-md-6 col-sm-12 ">
+          <mat-label> {{MainPortal.Lang['Salary']}}</mat-label>
+          <input type="number" matInput placeholder="Salary" formControlName="Salary">
+        </mat-form-field>
+
+
+        <mat-form-field appearance="fill" class=" col-md-6 col-sm-12 ">
+          <mat-label> {{MainPortal.Lang['BranchName']}}</mat-label>
+          <mat-select formControlName="BranchId">
+            <mat-option *ngFor="let B of OurservicesadminService.ListBranch" value="{{B.id}}">{{B.name}} |
+              {{B.description}}
+            </mat-option>
+          </mat-select>
+          <mat-error *ngIf="FormAdminRegiter.controls.BranchId.hasError('required')">Branch Is Required</mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12">
+          <button mat-button style="float: right;" color="accent" type="submit"
+            [disabled]="FormAdminRegiter.invalid">{{MainPortal.Lang['Submit']}}</button>
+        
+          <button type="button" style="float: right;margin-right: 1rem;" mat-button color="warn" (click)="Clear()">{{MainPortal.Lang['Clear']}}</button>
+        </div>
+      </div>
+
+     
+
+
+    </form>
+
+    <div class="tab-panel" id="tab-panel2">
+      <div class="row">
+        <div class="col-lg-6 col-md-8">
+          <mat-form-field appearance="fill" class="col-md-6  ">
+            <mat-label>{{MainPortal.Lang['PhoneNumber']}}</mat-label>
+            <input matInput placeholder="PhoneNumber" [formControl]="PhoneNumberSearch" required>
+            <mat-error *ngIf="PhoneNumberSearch.hasError('required')">PhoneNumber Is Required</mat-error>
+          </mat-form-field>
+          <button mat-button color="accent" (click)='SearchAdminByPhoneNumber()'
+            [disabled]="!PhoneNumberSearch.valid">{{MainPortal.Lang['Search']}}</button>
+        </div>
+
+      </div>
+    </div>
+    <div class="tab-panel" id="tab-panel3">
+      <div class="row">
+        <div class="col-lg-6 col-md-8">
+          <mat-form-field appearance="fill" class="col-md-6">
+            <mat-label>{{MainPortal.Lang['BranchName']}}</mat-label>
+            <mat-select [formControl]="BranchIdSearch">
+              <mat-option *ngFor="let B of OurservicesadminService.ListBranch" value="{{B.id}}">{{B.name}} |
+                {{B.description}}
+              </mat-option>
+            </mat-select>
+            <mat-error *ngIf="BranchIdSearch.hasError('required')">Branch Is Required</mat-error>
+          </mat-form-field>
+          <button mat-button color="accent" (click)='SearchAdminByBranch()'
+            [disabled]="!BranchIdSearch.valid">{{MainPortal.Lang['Search']}}</button>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="table-responsive-lg table-responsive-md table-responsive-sm">
+
+          <table class="table table-sm table-hover mytable">
+            <thead class="thead-light">
+              <tr>
+                <th>
+                  {{MainPortal.Lang['UserName']}}
+                </th>
+                <th>
+                  {{MainPortal.Lang['Email']}}
+                </th>
+                <th>
+
+                  {{MainPortal.Lang['PhoneNumber']}}
+                </th>
+                <th>
+                  {{MainPortal.Lang['NickName']}}
+                </th>
+                <th>
+                  {{MainPortal.Lang['Gender']}}
+                </th>
+                <th>
+
+                  {{MainPortal.Lang['Block']}}
+                </th>
+                <th>
+
+                  {{MainPortal.Lang['Password']}}
+                </th>
+                <th>
+
+                  {{MainPortal.Lang['Salary']}}
+                </th>
+                <th>
+                  {{MainPortal.Lang['BranchName']}}
+                </th>
+                <th>
+                  {{MainPortal.Lang['Edit']}}
+                </th>
+                <th>
+                  {{MainPortal.Lang['Delete']}}
+                </th>
+              </tr>
+            </thead>
+            <tbody *ngFor="let Admin of OurservicesadminService.ListAdmin">
+
+
+              <tr>
+                <td>
+                  <img *ngIf="Admin.image == ''" style="height: 30px;width: 30px;"
+                    src="../../../../assets/IMG/user.png">
+                  <img *ngIf="Admin.image != ''" style="height: 30px;width: 30px;"
+                    [src]="OurservicesadminService.URLIMG + Admin.image">
+                  {{Admin.userName}}
+                </td>
+                <td>
+                  {{Admin.email}}
+                </td>
+                <td>
+                  {{Admin.phoneNumber}}
+                </td>
+                <td>
+                  {{Admin.nickName}}
+                </td>
+                <td>
+                  <button *ngIf='Admin.gender' class="orange fluid ui button">
+                    <i class="fas fa-male"></i>
+                  </button>
+                  <button *ngIf='!Admin.gender' class="yellow fluid ui button">
+                    <i class="fas fa-female"></i>
+                  </button>
+                </td>
+                <td>
+                  <button (click)='UpdateBlockUserForSuperUser(Admin.id,Admin.block)' *ngIf='Admin.block'
+                    class="red fluid ui button">
+                    <i class="fas fa-lock"></i>
+                  </button>
+                  <button (click)='UpdateBlockUserForSuperUser(Admin.id,Admin.block)' *ngIf='!Admin.block'
+                    class="green fluid ui button">
+                    <i class="fas fa-lock-open"></i>
+                  </button>
+                </td>
+                <td>
+                  <button (click)='ShowChangePassword(Admin)' *ngIf='!Admin.ShowChangePassword'
+                    class="blue fluid ui button">
+                    <i class="fas fa-key"></i>
+                  </button>
+                  <button (click)='ShowChangePassword(Admin)' *ngIf='Admin.ShowChangePassword'
+                    class="green fluid ui button">
+                    <i class="fas fa-key"></i>
+                  </button>
+                </td>
+                <td>
+                  {{Admin.salary}} $
+
+                  <button (click)='ShowChangeSalary(Admin)' *ngIf='Admin.ShowChangeSalary' class="red fluid ui button">
+                    <i class="fas fa-dollar-sign"></i>
+                  </button>
+                  <button (click)='ShowChangeSalary(Admin)' *ngIf='!Admin.ShowChangeSalary'
+                    class="green fluid ui button">
+                    <i class="fas fa-dollar-sign"></i>
+                  </button>
+                </td>
+                <td>
+                  {{Admin.branchName}}
+                </td>
+                <td>
+                  <!-- <i class="fas fa-edit" (click)='GoToEdit(Customer)'></i> -->
+                  <button id="btn" (click)='Edit(Admin)' class="green fluid ui button">
+                    <i style="color: white;" class="fas fa-edit"></i>
+                  </button>
+                </td>
+                <td>
+                  <button id="btn" (click)='DeleteAdmin(Admin.id)' class="red fluid ui button">
+                    <i style="color: white;" class="fas fa-trash-alt"></i>
+                  </button>
+                </td>
+              </tr>
+
+              <tr>
+                <td *ngIf='Admin.ShowChangeSalary'></td>
+                <td *ngIf='Admin.ShowChangeSalary'></td>
+                <td *ngIf='Admin.ShowChangeSalary'></td>
+                <td *ngIf='Admin.ShowChangeSalary'>
+                  <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text" id="basic-addon1">{{MainPortal.Lang['New Salary']}}</span>
+                    </div>
+                    <input type="number" [(ngModel)]='Admin.NewSalary' class="form-control" placeholder="Salary"
+                      aria-label="Salary" aria-describedby="basic-addon1">
+                    <button (click)='UpdateSalaryUser(Admin)' type="button"
+                      class="btn btn-primary">{{MainPortal.Lang['Edit']}}</button>
+                  </div>
+                </td>
+                <td *ngIf='Admin.ShowChangeSalary'></td>
+                <td *ngIf='Admin.ShowChangeSalary'></td>
+                <td *ngIf='Admin.ShowChangeSalary'></td>
+                <td *ngIf='Admin.ShowChangeSalary'></td>
+                <td *ngIf='Admin.ShowChangeSalary'></td>
+              </tr>
+
+              <tr>
+                <td *ngIf='Admin.ShowChangePassword'></td>
+                <td *ngIf='Admin.ShowChangePassword'></td>
+                <td *ngIf='Admin.ShowChangePassword'></td>
+                <td *ngIf='Admin.ShowChangePassword'>
+                  <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text" id="basic-addon1">{{MainPortal.Lang['New Password']}}</span>
+                    </div>
+                    <input type="text" [(ngModel)]='Admin.NewPassword' class="form-control"
+                      placeholder="{{MainPortal.Lang['New Password']}}" aria-label="Password"
+                      aria-describedby="basic-addon1">
+                    <button (click)='EditPasswordUser(Admin)' type="button"
+                      class="btn btn-primary">{{MainPortal.Lang['Edit']}}</button>
+                  </div>
+                </td>
+                <td *ngIf='Admin.ShowChangePassword'></td>
+                <td *ngIf='Admin.ShowChangePassword'></td>
+                <td *ngIf='Admin.ShowChangePassword'></td>
+                <td *ngIf='Admin.ShowChangePassword'></td>
+                <td *ngIf='Admin.ShowChangePassword'></td>
+              </tr>
+            </tbody>
+
+
+          </table>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

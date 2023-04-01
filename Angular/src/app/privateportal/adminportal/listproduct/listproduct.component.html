@@ -1,0 +1,165 @@
+<div class="warpper">
+  <h1>Search By</h1>
+  <input class="radio" id="one" name="group" type="radio" checked>
+  <input class="radio" id="two" name="group" type="radio">
+  <input class="radio" id="three" name="group" type="radio">
+  <input class="radio" id="four" name="group" type="radio">
+  <div class="tabs">
+    <label class="tab" id="tab1" for="one">Name</label>
+    <label class="tab" id="tab2" for="two">Company</label>
+    <label class="tab" id="tab3" for="three">Category</label>
+    <label class="tab" id="tab4" for="four">Price</label>
+  </div>
+  <div class="tab-panels">
+    <div class="tab-panel" id="tab-panel1">
+      
+          <mat-form-field appearance="fill" class="col-md-4">
+            <mat-label>{{MainPortal.Lang['name']}}</mat-label>
+            <input matInput placeholder="Search By Name" [formControl]="SearchByName" required>
+            <mat-error *ngIf="SearchByName.hasError('required')">Name Is Required</mat-error>
+          </mat-form-field>
+        
+          <button mat-button color="accent" (click)='SearchProductByName()'
+            [disabled]="!SearchByName.valid">{{MainPortal.Lang['Search']}}</button>
+       
+    </div>
+
+    <div class="tab-panel" id="tab-panel2">
+      
+      <mat-form-field appearance="fill" class="col-md-4">
+        <mat-label>{{MainPortal.Lang['Company Of Origin']}}</mat-label>
+        <mat-select type="number" [formControl]="SearchByCompanyOfOriginId">
+          <mat-option *ngFor="let B of OurservicesadminService.ListCompanyOfOrigin" value="{{B.id}}">{{B.name}}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="SearchByCompanyOfOriginId.hasError('required')">Company Of Origin Is Required</mat-error>
+      </mat-form-field>
+      <button mat-button color="accent" (click)='SearchProductByCompanyOfOrigin()'
+        [disabled]="!SearchByCompanyOfOriginId.valid">{{MainPortal.Lang['Search']}}</button>
+    </div>
+    <div class="tab-panel" id="tab-panel3">
+      
+      <mat-form-field appearance="fill" class="col-md-4">
+        <mat-label>{{MainPortal.Lang['Category']}}</mat-label>
+        <mat-select type="number" [formControl]="SearchByCategoryId">
+          <mat-option *ngFor="let B of OurservicesadminService.ListCategory" value="{{B.id}}">{{B.name}}</mat-option>
+        </mat-select>
+        <mat-error *ngIf="SearchByCategoryId.hasError('required')">Category Is Required</mat-error>
+      </mat-form-field>
+      <button mat-button color="accent" (click)='SearchProductByCategory()'
+        [disabled]="!SearchByCategoryId.valid">{{MainPortal.Lang['Search']}}</button>
+    </div>
+    <div class="tab-panel" id="tab-panel4">     
+
+      <mat-form-field appearance="fill" class="col-md-4">
+        <mat-label>{{MainPortal.Lang['Price']}}</mat-label>
+        <input type="number" matInput placeholder="Search By Price" [formControl]="SearchByStartPrice" required>
+        <mat-error *ngIf="SearchByStartPrice.hasError('required')">Minimum Price Is Required</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="col-md-4">
+        <mat-label>{{MainPortal.Lang['Price']}}</mat-label>
+        <input type="number" matInput placeholder="Search By Price" [formControl]="SearchByEndPrice" required>
+        <mat-error *ngIf="SearchByEndPrice.hasError('required')">Max Price Is Required</mat-error>
+      </mat-form-field>
+      <button mat-button color="accent" (click)='SearchProductByPrice()'
+        [disabled]="!SearchByStartPrice.valid && !SearchByEndPrice.valid">{{MainPortal.Lang['Search']}}</button>
+    </div>
+
+    <!-- table-->
+
+    <div class="row">
+      <div class="col-md-12">
+        <div class="table-responsive-lg table-responsive-md table-responsive-sm">
+
+          <table class="table table-sm table-hover mytable">
+            <thead class="thead-light">
+              <tr>
+
+
+                <th>
+                  {{MainPortal.Lang['name']}}
+                </th>
+                <th>
+                  {{MainPortal.Lang['Price']}}
+                </th>
+                <th>
+                  {{MainPortal.Lang['Image']}}
+                </th>
+                <th>
+                  {{MainPortal.Lang['description']}}
+                </th>
+                <th>
+
+                  {{MainPortal.Lang['Status']}}
+                </th>
+                <th>
+
+                </th>
+                <th>
+
+                </th>
+                <th></th>
+                <th></th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+
+
+              <tr *ngFor="let V of OurservicesadminService.ListProduct">
+
+
+                <td>
+                  {{V.name}}
+                </td>
+                <td>
+                  {{V.price}} $
+                </td>
+                <td>
+                  <img style="height: 30px;width: 30px;" [src]="OurservicesadminService.URLIMG + V.image">
+                </td>
+                <td>
+                  {{V.description}}
+                </td>
+                <td>
+                  <button *ngIf='V.status' (click)='UpdateProductStatus(V.id,V.status)' class="green fluid ui button">
+                    <i class="fas fa-calendar-check"></i>
+                  </button>
+                  <button *ngIf='!V.status' (click)='UpdateProductStatus(V.id,V.status)' class="red fluid ui button">
+                    <i class="fas fa-calendar-times"></i>
+                  </button>
+                </td>
+                <td>
+                  <button (click)='DeleteProduct(V.id)' class="red fluid ui button">
+                    <i style="color: white;" class="fas fa-trash-alt"></i>
+                  </button>
+                </td>
+                <td>
+                  <button (click)='UpdateProduct(V)' class="green fluid ui button">
+                    <i style="color: white;" class="fas fa-edit"></i>
+                  </button>
+
+
+
+
+                </td>
+                <td>
+                  <button (click)='GetProductDetails(V.id)' class="blue fluid ui button">
+                    <i style="color: white;" class="fas fa-info-circle"></i>
+                  </button>
+                </td>
+                <td>
+                  <button (click)="RegisterStock(V.id)" class="blue fluid ui button">
+                    <i class="far fa-plus-square"></i>
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

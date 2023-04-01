@@ -1,0 +1,11 @@
+.row {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+}
+
+.row h3{
+    text-align: center;
+    display: flex;
+    justify-content: center;
+}

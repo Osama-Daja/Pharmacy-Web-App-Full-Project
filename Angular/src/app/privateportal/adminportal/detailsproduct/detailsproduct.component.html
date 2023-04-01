@@ -1,0 +1,100 @@
+
+<div class="row">
+ <div class="col-md-2">{{MainPortal.Lang['ProductName']}}: </div>
+ <div class="col-md-4">{{OurservicesadminService.DetailsProduct.productName}}</div>
+ <div class="col-md-2">{{MainPortal.Lang['Status']}}: </div>
+ <div class="col-md-4">
+  <button *ngIf='OurservicesadminService.DetailsProduct.status' class="green fluid ui button">
+    <i class="fas fa-calendar-check"></i>
+  </button>
+  <button *ngIf='!OurservicesadminService.DetailsProduct.status' class="red fluid ui button">
+    <i class="fas fa-calendar-times"></i>
+  </button> 
+</div>
+</div>
+<hr>
+<div class="row">
+    <div class="col-md-2">{{MainPortal.Lang['CompanyName']}}: </div>
+    <div class="col-md-4">{{OurservicesadminService.DetailsProduct.companyName}}</div>
+    <div class="col-md-2">{{MainPortal.Lang['Price']}}: </div>
+    <div class="col-md-4">{{OurservicesadminService.DetailsProduct.price}} $</div>
+   </div>
+<hr>
+
+
+<div class="row">
+    <div class="col-md-2">{{MainPortal.Lang['Image']}}: </div>
+    <div class="col-md-4"><img style="height: 30px;width: 30px;" [src]="OurservicesadminService.URLIMG + OurservicesadminService.DetailsProduct.image"></div>
+    <div class="col-md-2">{{MainPortal.Lang['description']}}: </div>
+    <div class="col-md-4">{{OurservicesadminService.DetailsProduct.description}}</div>
+   </div>
+<hr>
+
+<div class="row">
+    <div class="col-md-2">{{MainPortal.Lang['CategoryName']}}: </div>
+    <div class="col-md-4">{{OurservicesadminService.DetailsProduct.categoryName}}</div>
+    <div class="col-md-2">{{MainPortal.Lang['BranchName']}}: </div>
+    <div class="col-md-4">{{OurservicesadminService.DetailsProduct.branchName}}</div>
+   </div>
+<hr>
+
+<div class="row">
+    <div class="col-md-12">
+      <div class="table-responsive-lg table-responsive-md table-responsive-sm">
+  
+        <table class="table table-sm table-hover mytable">
+          <thead class="thead-light">
+            <tr>
+  
+              <th>
+                {{MainPortal.Lang['producedate']}}
+              </th>
+              <th>
+                {{MainPortal.Lang['expiredDate']}}
+              </th>
+              <th>
+                {{MainPortal.Lang['quantity']}}
+              </th>
+              <th>
+                {{MainPortal.Lang['quantityOrder']}}
+              </th>
+              <th>
+      
+              </th>
+             
+            </tr>
+          </thead>
+          <tbody>
+  
+           
+            <tr *ngFor="let S of OurservicesadminService.DetailsProduct.stock">
+             
+             
+              
+              <td>
+                {{S.produceDate}}
+              </td>
+              <td>
+                {{S.expiredDate}}
+              </td>
+              <td>
+                {{S.quantity}}
+              </td>
+              <td>
+                {{S.quantityOrder}}
+              </td>
+             
+              <td>
+                 <button (click)='openStock(S)' class="blue fluid ui button">
+                    <i style="color: white;" class="fas fa-info-circle"></i> 
+                  </button>
+              </td>
+           
+               
+            </tr>
+          </tbody>
+        </table>
+  
+      </div>
+    </div>
+  </div>

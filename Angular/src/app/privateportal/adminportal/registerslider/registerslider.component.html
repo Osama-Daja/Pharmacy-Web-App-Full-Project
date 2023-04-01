@@ -1,0 +1,108 @@
+<div class="row">
+  <form method="post" [formGroup]='sliderForm' (submit)='Submit()'>
+    <mat-form-field appearance="fill" hidden>
+      <input type="number" readonly matInput placeholder="Id" formControlName="Id" required>
+    </mat-form-field>
+
+    <div class="row">
+      <div class="col-md-12">
+
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-4 col-md-4 col-sm-4 ">
+
+      </div>
+      <div class="col-lg-4 col-md-4 col-sm-4 ">
+        <img style="height: 10pc; width: 10pc;" class="center rounded float-center th img-circle" [src]="ImagePreview">
+        <hr>
+        <input type="file" name="image" (change)="fileProgress($event)" />
+        <hr>
+      </div>
+      <div class="col-lg-4 col-md-4 col-sm-4 ">
+
+      </div>
+    </div>
+    <mat-form-field appearance="fill" class="col-lg-4 col-md-6 col-sm-12 ">
+      <mat-label>{{MainPortal.Lang['Title']}}</mat-label>
+      <input matInput placeholder="{{MainPortal.Lang['Title']}}" formControlName="TitleText" required>
+      <mat-error *ngIf="sliderForm.controls.TitleText.hasError('required')">Title Is Required</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="col-lg-4 col-md-6 col-sm-12 ">
+      <mat-label>{{MainPortal.Lang['Brief']}}</mat-label>
+      <input matInput placeholder="{{MainPortal.Lang['Brief']}}" formControlName="BriefText" required>
+      <mat-error *ngIf="sliderForm.controls.BriefText.hasError('required')">Brief Text Is Required</mat-error>
+    </mat-form-field>
+    <div class="row">
+      <div class="col-md-8">
+        <button mat-button color="accent" type="submit" style="float: right; margin: 0 0 0 1rem"
+          [disabled]="sliderForm.invalid">{{MainPortal.Lang['Submit']}}</button>
+
+        <button type="button" mat-button color="warn" style="float: right;"
+          (click)="Clear()">{{MainPortal.Lang['Clear']}}</button>
+      </div>
+    </div>
+
+
+
+
+
+  </form>
+</div>
+
+
+<div class="row">
+  <div class="col-md-12">
+    <div class="table-responsive-lg table-responsive-md table-responsive-sm">
+
+      <table class="table table-sm table-hover mytable">
+        <thead class="thead-light">
+          <tr>
+            <th>
+
+              {{MainPortal.Lang['Image']}}
+            </th>
+            <th>
+              {{MainPortal.Lang['Title']}}
+            </th>
+            <th>
+              {{MainPortal.Lang[' Brief Text']}}
+            </th>
+            <th>
+
+            </th>
+            <th>
+
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let slider of OurservicesadminService.ListSlider">
+            <td>
+              <img style="height: 30px;width: 30px;" [src]="OurservicesadminService.URLIMG + slider.sliderImg">
+            </td>
+            <td>
+              {{slider.titleText}}
+            </td>
+            <td>
+              {{slider.briefText}}
+            </td>
+            <td>
+              <button id="btn" (click)='Edit(slider)' class="green fluid ui button">
+                <i style="color: white;" class="fas fa-edit"></i>
+              </button>
+
+            </td>
+            <td>
+              <button id="btn" (click)='Delete(slider.id)' class="red fluid ui button">
+                <i style="color: white;" class="fas fa-trash-alt"></i>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+    </div>
+  </div>
+</div>

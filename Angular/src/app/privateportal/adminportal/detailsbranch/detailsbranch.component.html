@@ -1,0 +1,236 @@
+
+<div class="row">
+    <div class="col-3"></div>
+    <div class="col-6" style="
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    ">
+        <hr>
+        <div class="row">
+            <div class="col-4"><strong>{{MainPortal.Lang['name']}}</strong><hr> {{OurservicesadminService.DetailsBranch.name}}</div>
+            <div class="col-4" *ngIf= 'OurservicesadminService.DetailsBranch.startWorkHours == null'>
+                <strong>{{MainPortal.Lang['WorkHours']}}</strong>  24 Hours
+            </div>
+            <div class="col-4" *ngIf= 'OurservicesadminService.DetailsBranch.startWorkHours != null'>
+                <strong>Work Hours</strong><hr> {{OurservicesadminService.DetailsBranch.startWorkHours.value.hours}} : {{OurservicesadminService.DetailsBranch.startWorkHours.value.minutes}}
+                => {{OurservicesadminService.DetailsBranch.endWorkHours.value.hours}} : {{OurservicesadminService.DetailsBranch.endWorkHours.value.minutes}}
+            </div>
+            <div class="col-4">
+                <strong>{{MainPortal.Lang['Position']}}</strong><hr>
+                <a style="margin: auto" href="https://www.google.jo/maps/dir//{{OurservicesadminService.DetailsBranch.longitude}},{{OurservicesadminService.DetailsBranch.latitude}}" target="_blank">
+                    <i class="fas fa-map-marked"></i>
+                  </a>
+            </div>
+        </div>
+    </div>
+    <div class="col-3"style="
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  ">
+  </div>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col-3"></div>
+        <div class="col-6" style="
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+        ">
+            <hr>
+            <div class="row">
+                <div class="col-12 center">
+                    <strong>{{MainPortal.Lang['description']}}</strong><hr>
+                    {{OurservicesadminService.DetailsBranch.description}}
+                </div>
+            </div>
+        </div>
+        <div class="col-3"style="
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+      ">
+      </div>
+        </div>
+        <hr>
+
+
+
+
+        <div class="row">
+            <div class="col-md-12">
+              <div class="table-responsive-lg table-responsive-md table-responsive-sm">
+          
+                <table class="table table-sm table-hover mytable">
+                  <thead class="thead-light">
+                    <tr>
+                      <th>
+                        {{MainPortal.Lang['UserName']}}
+                      </th>
+                      <th>
+                        {{MainPortal.Lang['Email']}}
+                      </th>
+                      <th>
+                        
+                        {{MainPortal.Lang['PhoneNumber']}}
+                      </th>
+                      <th>
+                        
+                        {{MainPortal.Lang['NickName']}}
+                      </th>
+                      <th>
+                        
+                        {{MainPortal.Lang['Gender']}}
+                      </th>
+                      <th>
+                        
+                        {{MainPortal.Lang['Block']}}
+                      </th>
+                      <th>
+                        
+                        {{MainPortal.Lang['Salary']}}
+                      </th>
+                      <th>
+                      
+                      </th>
+                     <th>
+          
+                     </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+          
+                   
+                    <tr *ngFor="let Employee of OurservicesadminService.DetailsBranch.employee">          
+                      <td>
+                        <img *ngIf="Employee.image == ''" style="height: 30px;width: 30px;" 
+                        src="../../../../assets/IMG/admin.png">
+                        <img *ngIf="Employee.image != ''" style="height: 30px;width: 30px;" 
+                        [src]="OurservicesadminService.URLIMG + Employee.image">
+                        {{Employee.userName}}
+                      </td>
+                      <td>
+                        {{Employee.email}}
+                      </td>
+                      <td>
+                        {{Employee.phoneNumber}}
+                      </td>
+                      <td>
+                        {{Employee.nickName}}
+                      </td>
+                      <td>
+                        <button *ngIf='Employee.gender' class="orange fluid ui button">
+                            <i class="fas fa-male"></i> 
+                          </button>
+                          <button *ngIf='!Employee.gender' class="yellow fluid ui button">
+                            <i class="fas fa-female"></i>
+                          </button>
+                      </td>
+                      <td>
+                        <button *ngIf='Employee.block' class="red fluid ui button">
+                            <i class="fas fa-lock"></i>
+                          </button>
+                          <button *ngIf='!Employee.block' class="green fluid ui button">
+                            <i class="fas fa-lock-open"></i>
+                          </button>
+                      </td>
+                     <td>
+                      {{Employee.salary}} $
+                     </td>
+                     <td>
+                        <button *ngIf='Employee.roleId == 3' class="blue fluid ui button">
+                            <i class="fas fa-shuttle-van"></i>
+                          </button>
+                          <button *ngIf='Employee.roleId == 2' class="green fluid ui button">
+                            <i class="fas fa-user-shield"></i>
+                          </button>
+                     </td>
+                        <td>
+                     </tbody>
+                     
+          
+                </table>
+          
+              </div>
+            </div>
+          </div>
+
+          <br>
+          <hr>
+          <br>
+
+          <div class="row">
+            <div class="col-md-12">
+              <div class="table-responsive-lg table-responsive-md table-responsive-sm">
+          
+                <table class="table table-sm table-hover mytable">
+                  <thead class="thead-light">
+                    <tr>
+                    
+                      
+                      <th>
+                        
+                        {{MainPortal.Lang['name']}}
+                      </th>
+                      <th>
+                        
+                        {{MainPortal.Lang['Price']}}
+                      </th>
+                      <th>
+                        {{MainPortal.Lang['description']}}
+                        
+
+                      </th>
+                      <th>
+                        {{MainPortal.Lang['CategoryName']}}
+                        
+                      </th>
+                      <th>
+                        {{MainPortal.Lang['Company Of Origin']}}
+                        
+                      </th>
+                      <th>
+                        
+                        {{MainPortal.Lang['Status']}}
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+          
+                   
+                    <tr *ngFor="let P of OurservicesadminService.DetailsBranch.product">
+                     
+                     
+                      <td>
+                        <img style="height: 30px;width: 30px;" [src]="OurservicesadminService.URLIMG + P.productImage">
+                        {{P.productName}}
+                      </td>
+                      <td>
+                        {{P.price}} $
+                      </td>
+                      <td>
+                        {{P.productDescription}}
+                      </td>
+                      <td>
+                        {{P.categoryName}}
+                      </td>
+                      <td>
+                        {{P.companyOfOriginName}}
+                      </td>
+                      <td>
+                        <button *ngIf='P.status' class="green fluid ui button">
+                            <i class="fab fa-shopify"></i>
+                          </button>
+                          <button *ngIf='!P.status' class="yellow fluid ui button">
+                            <i class="fas fa-warehouse"></i>
+                          </button>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+          
+              </div>
+            </div>
+          </div>

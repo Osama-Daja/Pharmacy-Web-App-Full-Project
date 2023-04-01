@@ -1,0 +1,214 @@
+<div class="warpper">
+  <h1>Search By</h1>
+  <input class="radio" id="one" name="group" type="radio" checked>
+  <input class="radio" id="two" name="group" type="radio">
+  <input class="radio" id="three" name="group" type="radio">
+  <input class="radio" id="four" name="group" type="radio">
+  <input class="radio" id="five" name="group" type="radio">
+  <div class="tabs">
+    <label class="tab" id="tab1" for="one">Username</label>
+    <label class="tab" id="tab2" for="two">PhoneNumber</label>
+    <label class="tab" id="tab3" for="three">Email</label>
+    <label class="tab" id="tab4" for="four">Branch</label>
+    <label class="tab" id="tab5" for="five">Date</label>
+  </div>
+  <div class="tab-panels">
+    <div class="tab-panel" id="tab-panel1">
+      <mat-form-field appearance="fill" class="col-lg-4 col-md-6 col-sm-12 ">
+        <mat-label>{{MainPortal.Lang['UserName']}}</mat-label>
+        <input matInput placeholder="UserName" [formControl]="SearchUserName" required>
+        <mat-error *ngIf="SearchUserName.hasError('required')">UserName Is Required</mat-error>
+      </mat-form-field>
+      <button mat-button color="accent" (click)='SearchCustomerByUserName()'
+        [disabled]="!SearchUserName.valid">{{MainPortal.Lang['Search']}}</button>
+
+    </div>
+    <div class="tab-panel" id="tab-panel2">
+      <mat-form-field appearance="fill" class="col-lg-4 col-md-6 col-sm-12 ">
+        <mat-label>{{MainPortal.Lang['PhoneNumber']}}</mat-label>
+        <input matInput placeholder="PhoneNumber" [formControl]="SearchPhoneNumber" required>
+        <mat-error *ngIf="SearchPhoneNumber.hasError('required')">PhoneNumber Is Required</mat-error>
+      </mat-form-field>
+      <button mat-button color="accent" (click)='SearchCustomerByPhoneNumber()'
+        [disabled]="!SearchPhoneNumber.valid">{{MainPortal.Lang['Search']}}</button>
+
+    </div>
+    <div class="tab-panel" id="tab-panel3">
+      <mat-form-field appearance="fill" class="col-lg-4 col-md-6 col-sm-12 ">
+        <mat-label>{{MainPortal.Lang['Email']}}</mat-label>
+        <input matInput placeholder="Email" [formControl]="SearchEmail" required>
+        <mat-error *ngIf="SearchEmail.hasError('required')">Email Is Required</mat-error>
+        <mat-error *ngIf="SearchEmail.hasError('email')">Should Be Email</mat-error>
+      </mat-form-field>
+      <button mat-button color="accent" (click)='SearchCustomerByEmail()'
+        [disabled]="!SearchEmail.valid">{{MainPortal.Lang['Search']}}</button>
+
+    </div>
+    <div class="tab-panel" id="tab-panel4">
+      <mat-form-field appearance="fill" class="col-lg-4 col-md-6 col-sm-12 ">
+        <mat-label>{{MainPortal.Lang['BranchName']}}</mat-label>
+        <mat-select [formControl]="BranchIdSearch">
+          <mat-option *ngFor="let B of OurservicesadminService.ListBranch" value="{{B.id}}">{{B.name}} |
+            {{B.description}}</mat-option>
+        </mat-select>
+        <mat-error *ngIf="BranchIdSearch.hasError('required')">Branch Is Required</mat-error>
+      </mat-form-field>
+      <button mat-button color="accent" (click)='SearchCustomerByBranch()'
+        [disabled]="!BranchIdSearch.valid">{{MainPortal.Lang['Search']}}</button>
+
+    </div>
+    <div class="tab-panel" id="tab-panel5">
+      <mat-form-field class="example-form-field" appearance="fill" class="col-lg-4 col-md-6 col-sm-12 ">
+        <mat-label>{{MainPortal.Lang['First campaign']}}</mat-label>
+        <mat-date-range-input [formGroup]="SearchBirthDay" [rangePicker]="BirthDay">
+          <input matStartDate placeholder="Start date" formControlName="start">
+          <input matEndDate placeholder="End date" formControlName="end">
+        </mat-date-range-input>
+        <mat-datepicker-toggle matSuffix [for]="BirthDay"></mat-datepicker-toggle>
+        <mat-date-range-picker #BirthDay></mat-date-range-picker>
+      </mat-form-field>
+
+      <button mat-button color="accent" (click)='SearchCustomerByBirthDay()'
+        [disabled]="SearchBirthDay.invalid">{{MainPortal.Lang['Search']}}</button>
+
+
+    </div>
+    <!-- table-->
+    <div class="row">
+      <div class="col-md-12">
+        <div class="table-responsive-lg table-responsive-md table-responsive-sm">
+
+          <table class="table table-sm table-hover mytable">
+            <thead class="thead-light">
+              <tr>
+                <!--           
+              <th>
+                 Image
+              </th> -->
+                <th>
+                  {{MainPortal.Lang['UserName']}}
+                </th>
+                <th>
+                  {{MainPortal.Lang['Email']}}
+                </th>
+                <th>
+                  {{MainPortal.Lang['PhoneNumber']}}
+                </th>
+                <th>
+                  {{MainPortal.Lang['NickName']}}
+                </th>
+                <th>
+                  {{MainPortal.Lang['Gender']}}
+                </th>
+                <th>
+                  {{MainPortal.Lang['Block']}}
+                </th>
+                <th>
+                  {{MainPortal.Lang['Map']}}
+                </th>
+
+                <th>
+                  {{MainPortal.Lang['Password']}}
+                </th>
+                <th>
+
+                </th>
+                <th></th>
+              </tr>
+              <tr></tr>
+            </thead>
+            <tbody *ngFor="let Customer of OurservicesadminService.ListCustomer">
+
+
+              <tr>
+                <td>
+                  {{Customer.userName}}
+                </td>
+                <td>
+                  {{Customer.email}}
+                </td>
+                <td>
+                  {{Customer.phoneNumber}}
+                </td>
+                <td>
+                  {{Customer.nickName}}
+                </td>
+                <td>
+                  <!-- {{Customer.gender}} -->
+                  <button *ngIf='Customer.gender' class="orange fluid ui button">
+                    <i class="fas fa-male"></i>
+                  </button>
+                  <button *ngIf='!Customer.gender' class="yellow fluid ui button">
+                    <i class="fas fa-female"></i>
+                  </button>
+                </td>
+                <td>
+                  <!-- {{Customer.block}} -->
+                  <button (click)='UpdateBlockUserForSuperUser(Customer.id,Customer.block)' *ngIf='Customer.block'
+                    class="red fluid ui button">
+                    <i class="fas fa-lock"></i>
+                  </button>
+                  <button (click)='UpdateBlockUserForSuperUser(Customer.id,Customer.block)' *ngIf='!Customer.block'
+                    class="green fluid ui button">
+                    <i class="fas fa-lock-open"></i>
+                  </button>
+                </td>
+                <td>
+                  <a style="margin: auto"
+                    href="https://www.google.jo/maps/dir//{{Customer.longitude}},{{Customer.latitude}}" target="_blank">
+                    <i class="fas fa-map-marked"></i>
+                  </a>
+                </td>
+
+                <td>
+                  <button (click)='ShowChangePassword(Customer)' *ngIf='!Customer.ShowChangePassword'
+                    class="blue fluid ui button">
+                    <i class="fas fa-key"></i>
+                  </button>
+                  <button (click)='ShowChangePassword(Customer)' *ngIf='Customer.ShowChangePassword'
+                    class="green fluid ui button">
+                    <i class="fas fa-key"></i>
+                  </button>
+                </td>
+                <td>
+                  <button id="btn" (click)='GoToEdit(Customer)' class="green fluid ui button">
+                    <i style="color: white;" class="fas fa-edit"></i>
+                  </button>
+                </td>
+                <td>
+                  <button id="btn" (click)='DeleteCustomer(Customer.id)' class="red fluid ui button">
+                    <i style="color: white;" class="fas fa-trash-alt"></i>
+                  </button>
+                </td>
+
+
+              </tr>
+              <tr>
+                <td *ngIf='Customer.ShowChangePassword'></td>
+                <td *ngIf='Customer.ShowChangePassword'></td>
+                <td *ngIf='Customer.ShowChangePassword'></td>
+                <td *ngIf='Customer.ShowChangePassword'>
+                  <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text" id="basic-addon1">{{MainPortal.Lang['New Password']}}</span>
+                    </div>
+                    <input type="text" [(ngModel)]='Customer.NewPassword' class="form-control" placeholder="Password"
+                      aria-label="Password" aria-describedby="basic-addon1">
+                    <button (click)='EditPasswordUser(Customer.id,Customer.NewPassword)' type="button"
+                      class="btn btn-primary">{{MainPortal.Lang['Edit']}}</button>
+                  </div>
+                </td>
+                <td *ngIf='Customer.ShowChangePassword'></td>
+                <td *ngIf='Customer.ShowChangePassword'></td>
+                <td *ngIf='Customer.ShowChangePassword'></td>
+                <td *ngIf='Customer.ShowChangePassword'></td>
+                <td *ngIf='Customer.ShowChangePassword'></td>
+              </tr>
+            </tbody>
+          </table>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

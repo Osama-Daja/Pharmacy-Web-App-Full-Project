@@ -1,0 +1,210 @@
+<input type="checkbox" id="nav-toggle">
+
+<!-- start Sidebar -->
+<div class="sidebar">
+    <div class="sidebar-brand">
+        <h2>
+            <img src="../../../../assets/IMG/Logo/logo1.png" alt="" class="logo">
+            <span>Tahaluf Pharmacy</span>
+        </h2>
+    </div>
+
+    <div class="sidebar-menu">
+        <ul>
+            <li>
+                <a class="active">
+                    <span><i class="fas fa-home"></i></span>
+                    <span> {{MainPortal.Lang['Home']}}</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+<!-- end Sidebar -->
+
+<!-- start Chat -->
+<div class="chat chat-bordered">
+    <div class="chat-header">
+        <h4 class="chat-title"><strong>Chat</strong></h4>
+        <hr>
+        <mat-form-field appearance="fill">
+            <mat-label style="color: #fff !important;">Select Customer</mat-label>
+            <mat-select [(ngModel)]='OurservicesprivateService.UserId'>
+                <mat-option *ngFor="let User of OurservicesprivateService.List" [value]="User.userId">
+                    <img *ngIf="User.image == ''" style="height: 30px;width:30px;"
+                        src="../../../../assets/IMG/admin.png">
+                    <img *ngIf="User.image != ''" style="height: 30px;width:30px;"
+                        [src]="OurservicesprivateService.URLIMG + User.image">
+                    {{User.nickName}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+
+    <div class="chat-body" id="chat-content">
+        <div *ngFor='let User of OurservicesprivateService.List'>
+            <div *ngIf='User.userId == OurservicesprivateService.UserId'>
+                <div *ngFor='let Text of User.messages'>
+                    <div *ngIf='Text.Id != 0' class="media media-chat">
+                        <img class="avatar" *ngIf="User.image == ''" src="../../../../assets/IMG/user.png" alt="...">
+                        <img class="avatar" *ngIf="User.image != ''"
+                            [src]="OurservicesprivateService.URLIMG + User.image" alt="...">
+                        <div class="media-body">
+                            <p>{{Text.text}}</p>
+                            <p class="meta"><time datetime="2018">{{Text.currentDate | date}}</time></p>
+                        </div>
+                    </div>
+                    <div *ngIf='Text.Id == 0' class="media media-chat media-chat-reverse">
+                        <div class="media-body">
+                            <p>{{Text.text}}</p>
+                            <p class="meta"><time datetime="2018">{{Text.currentDate | date}}</time></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="ps-scrollbar-x-rail" style="left: 0px; bottom: 0px;">
+            <div class="ps-scrollbar-x" tabindex="0" style="left: 0px; width: 0px;"></div>
+        </div>
+        <div class="ps-scrollbar-y-rail" style="top: 0px; height: 0px; right: 2px;">
+            <div class="ps-scrollbar-y" tabindex="0" style="top: 0px; height: 2px;"></div>
+        </div>
+    </div>
+
+    <!-- start Osama functions -->
+    <div class="publisher bt-1 border-light">
+        <img class="avatar avatar-xs" *ngIf="OurservicesprivateService.MyAccountData.image != ''"
+            [src]="OurservicesprivateService.URLIMG + OurservicesprivateService.MyAccountData.image" alt="...">
+
+        <img class="avatar avatar-xs" *ngIf="OurservicesprivateService.MyAccountData.image == ''"
+            src="../../../../assets/IMG/admin.png" alt="...">
+
+        <input class="publisher-input" type="text" placeholder="Write something"
+            [(ngModel)]='OurservicesprivateService.MessageText'>
+
+
+        <a class="publisher-btn text-info" (click)="AddMessage()" data-abc="true">
+            <i class="fa fa-paper-plane"></i>
+        </a>
+    </div>
+    <!-- end Osama functions -->
+</div>
+<!-- end Chat -->
+
+
+<!-- start header and thier contents -->
+<div class="main-content">
+
+
+    <header>
+        <div class="header-title">
+            <h2>
+                <label for="nav-toggle">
+                    <i class="fa fa-bars" aria-hidden="true"></i>
+                </label>
+                <p> Dashboard</p>
+            </h2>
+        </div>
+
+
+
+        <div class="user-wrapper">
+
+            <ul>
+                <li>
+                    <label class="switch">
+                        <input (change)='ChangeLanguage()' class="switch-input" type="checkbox" id="chklang" />
+                        <span class="switch-label" data-on="Ar" data-off="En"></span> <span
+                            class="switch-handle"></span>
+                    </label>
+                </li>
+
+                <li class="notification">
+                    <i class="fas fa-bell" onclick="Notifi()"></i>
+                    <sup class="counter">{{OurservicesprivateService.ListOfNotifications.length}}</sup>
+                    <ul class="notification-ul">
+                        <li *ngFor='let O of OurservicesprivateService.ListOfNotifications'>
+                            <a>
+                                <div class="row">
+                                    <div class="col-4">
+                                        <img *ngIf="O.Bag.image != ''" style="height: 30px; width: 30px;"
+                                            [src]="OurservicesprivateService.URLIMG + O.Bag.image">
+                                        <img *ngIf="O.Bag.image == ''" style="height: 30px; width: 30px;"
+                                            src="../../../../assets/IMG/user.png">
+                                    </div>
+                                    <div class="col-8">
+                                        {{O.Bag.nickName}} |
+                                        {{O.Bag.phoneNumber}}
+                                    </div>
+                                    <div class="row container">
+                                        <button (click)='ShowDetailsBag(O)' *ngIf='O.Bag.status == 3'
+                                            class="green fluid ui button"><i class="fas fa-check-circle"></i></button>
+                                        <button (click)='ShowDetailsBag(O)' *ngIf='!(O.Bag.status == 3)'
+                                            class="blue fluid ui button"><i class="fas fa-shuttle-van"></i></button>
+                                    </div>
+                                    <div class="row container">
+                                        <button (click)='ShowMap()'
+                                            *ngIf='O.Bag.status == 1 && O.Bag.latitude != undefined'
+                                            class="yellow fluid ui button"><i
+                                                class="fas fa-map-marker-alt"></i></button>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li>
+                    <i onclick="msg()" class="fas fa-envelope" style="color: green;" id="msg"></i>
+                    <sup class="counter">{{OurservicesprivateService.List.length}}</sup>
+                </li>
+
+
+
+                <li>
+                    <img onclick="usericon()" *ngIf="OurservicesprivateService.MyAccountData.image != ''"
+                        [src]="OurservicesprivateService.URLIMG + OurservicesprivateService.MyAccountData.image" alt=""
+                        class="user-icon">
+                    <img onclick="usericon()" *ngIf="OurservicesprivateService.MyAccountData.image == ''"
+                        src="../../../../assets/IMG/user.png" alt="" class="user-icon">
+                    <div class="profile-menu">
+                        <ul>
+                            <li>
+                                <a routerLink='/private/profile'>
+                                    <span><i class="fas fa-user"></i> Profile</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a routerLink='/private/updateaccount'>
+                                    <span><i class="fas fa-cog"></i> Edit Account</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a (click)="LogOut()">
+                                    <span><i class="fas fa-power-off"></i> Logout</span>
+                                </a>
+                            </li>
+
+                        </ul>
+                    </div>
+                </li>
+
+                <li>
+                    <div class="user-info">
+                        <h4>{{OurservicesprivateService.MyAccountData.nickName}}</h4>
+                        <small>{{OurservicesprivateService.MyAccountData.phoneNumber}}</small>
+                    </div>
+                </li>
+
+            </ul>
+        </div>
+    </header>
+    <!-- start header -->
+
+    <!-- main contains dashboard data visbility -->
+    <main>
+        <!-- Main informatio to show depends on dashboard -->
+        <router-outlet></router-outlet>
+    </main>
+</div>
+<!-- end header and thier contents -->

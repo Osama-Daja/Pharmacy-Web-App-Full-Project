@@ -1,0 +1,45 @@
+
+
+<div class="row">
+    <div class="col-md-12">
+      <div class="table-responsive-lg table-responsive-md table-responsive-sm">
+  
+        <table class="table table-sm table-hover mytable">
+          <thead class="thead-light">
+            <tr>
+              <th>
+                Image
+              </th>
+              <th>
+                Name
+              </th>
+              <th>
+                Price
+              </th>
+              <th>
+                Quantity
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let P of Bag.Bag.product">
+              <td>
+                <img *ngIf="P.productImage != ''" style="height: 30px;width: 30px;" [src]="OurservicescustomerService.URLIMG + P.productImage">
+                <img *ngIf="P.productImage == ''" style="height: 30px;width: 30px;" src="../../../../assets/IMG/user.png">
+              </td>
+              <td>
+                {{P.productName}}
+              </td>
+              <td>
+                {{P.productPrice}} $
+              </td>
+              <td>
+                  {{P.quantity}}
+              </td>
+            </tr>
+          </tbody>
+        </table>
+  
+      </div>
+    </div>
+  </div>

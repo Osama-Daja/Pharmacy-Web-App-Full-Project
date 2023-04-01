@@ -1,0 +1,94 @@
+
+
+<div class="warpper">
+  <input class="radio" id="one" name="group" type="radio" checked>
+  <input class="radio" id="two" name="group" type="radio">
+  <div class="tabs">
+    <label class="tab" id="tab1" for="one">Text</label>
+    <label class="tab" id="tab2" for="two">Date</label>
+  </div>
+  <div class="tab-panels">
+    <div class="tab-panel" id="tab-panel1">
+      <div class="row">
+        
+
+          <mat-form-field appearance="fill" class="col-lg-4 col-md-6 col-sm-12 ">
+            <mat-label>{{MainPortal.Lang['text']}}</mat-label>
+            <input matInput placeholder="{{MainPortal.Lang['text']}}" [formControl]="text" required>
+            <mat-error *ngIf="text.hasError('required')">text Is Required</mat-error>
+          </mat-form-field>
+          <button mat-button color="accent" style="height: 36px; bottom: -17px;" (click)='SearchTestamonialText()'
+            [disabled]="!text.valid">{{MainPortal.Lang['Search']}}</button>
+
+        
+      </div>
+    </div>
+    <div class="tab-panel" id="tab-panel2">
+      <div class="row">
+          <mat-form-field class="example-form-field" appearance="fill" class="col-lg-4 col-md-6 col-sm-12 ">
+            <mat-label>{{MainPortal.Lang['First campaign']}}</mat-label>
+            <mat-date-range-input [formGroup]="searchbydate" [rangePicker]="BirthDay">
+              <input matStartDate placeholder="Start date" formControlName="start">
+              <input matEndDate placeholder="End date" formControlName="end">
+            </mat-date-range-input>
+            <mat-datepicker-toggle matSuffix [for]="BirthDay"></mat-datepicker-toggle>
+            <mat-date-range-picker #BirthDay></mat-date-range-picker>
+
+          </mat-form-field>
+
+          <button mat-button color="accent" style="height: 36px; bottom: -17px;" (click)='SearchDate()'
+            [disabled]="searchbydate.invalid">{{MainPortal.Lang['Search']}}</button>
+
+        
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12">
+        <div class="table-responsive-lg table-responsive-md table-responsive-sm">
+
+          <table class="table table-sm table-hover mytable">
+            <thead class="thead-light">
+              <tr>
+
+                <th>
+                  {{MainPortal.Lang['text']}}
+                </th>
+                <th>
+                  {{MainPortal.Lang['Status']}}
+                </th>
+                <th>
+                  &nbsp;
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let Testimonial of OurservicesadminService.ListTestimonial">
+
+                <td>
+                  {{Testimonial.text}}
+                </td>
+                <td>
+                  <button *ngIf='Testimonial.status' (click)='ChangeStatus(Testimonial)' class="green fluid ui button">
+                    <i class="fas fa-calendar-check"></i>
+                  </button>
+                  <button *ngIf='!Testimonial.status' (click)='ChangeStatus(Testimonial)' class="red fluid ui button">
+                    <i class="fas fa-calendar-times"></i>
+                  </button>
+                </td>
+                <td>
+                  <button (click)='Delete(Testimonial.id)' class="red fluid ui button">
+                    <i style="color: white;" class="fas fa-trash-alt"></i>
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+</div>

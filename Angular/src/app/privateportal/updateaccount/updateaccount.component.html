@@ -1,0 +1,124 @@
+<div class="container rounded bg-white mt-5 mb-5">
+  <div class="row">
+      <div class="col-md-3 border-right">
+          <div class="d-flex flex-column align-items-center text-center p-3 py-5 leftSide"><img style="height: 10pc; width: 10pc;" class="center rounded float-center th img-circle" [src]="OurservicesprivateService.ProfileImageURL"></div>
+          <input type="file" name="image" (change)="fileProgress($event)" style="margin-top:5px;margin-left: 50px; overflow: hidden;width: 82%;"/>
+          <button class="btn btn-secondary" (click) = 'UpdateImageUser()' >Update </button>
+        </div>
+      <div class="col-md-5 border-right">
+          <div class="p-3 py-5">
+              <div class="d-flex justify-content-between align-items-center mb-3">
+                  <h4 class="text-center">Profile Settings</h4>
+              </div>
+              <div class="row mt-2">
+                  <div class="col-md-6">
+                    <mat-form-field appearance="fill">
+                      <mat-label>New UserName</mat-label>
+                      <input matInput placeholder="NewUserName" [formControl]="NewUserName" required>
+                      <mat-error *ngIf="NewUserName.hasError('required')">UserName Is Required</mat-error>
+                    </mat-form-field>
+                    <button mat-button color="accent" (click) ='UpdateUserNameUser()' [disabled]="!NewUserName.valid">Update UserName</button>
+                  </div>
+                  <div class="col-md-6"></div>
+              </div>
+              <div class="row mt-3">
+                  <div class="col-md-12">
+                   
+                    <mat-form-field appearance="fill">
+                      <mat-label>New UserName</mat-label>
+                      <input matInput placeholder="NewEmail" [formControl]="NewEmail" required>
+                      <mat-error *ngIf="NewEmail.hasError('required')">UserName Is Required</mat-error>
+                      <mat-error *ngIf="NewEmail.hasError('email')">Should Be Email</mat-error>
+                    </mat-form-field>
+                    <br>
+                    <button mat-button color="accent" (click) ='UpdateEmailUser()' [disabled]="!NewEmail.valid">Update Email</button>                 
+              </div>
+              <div class="row mt-3">
+                  <div class="col-md-6">
+                    <div *ngIf="OurservicesprivateService.ConfirmCodePassword == ''"[formGroup] = "Passwords">
+
+                      <mat-form-field appearance="fill" >
+                        <mat-label>New Password</mat-label>
+                        <input type="password" matInput placeholder="NewPassword" formControlName="Password" required>
+                        <mat-error *ngIf="Passwords.get('Password')?.errors?.required">Please Enter Password.</mat-error>
+                      </mat-form-field>
+                      <mat-form-field appearance="fill" >
+                        <mat-label>Confirm Password</mat-label>
+                        <input type="password" matInput placeholder="Confirm Password" formControlName="ConfirmPassword" required>
+                        <mat-error *ngIf="Passwords.get('ConfirmPassword')?.errors?.required">Please Enter Confirm Password.</mat-error>
+                        <mat-error *ngIf="Passwords.get('ConfirmPassword')?.errors?.passwordMismatch">Confirm Password does not match.</mat-error>
+                    </mat-form-field>
+                      <button mat-button color="accent" (click) ='GetConfirmCodePassword()' [disabled]="!Passwords.valid">Update Password</button>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div *ngIf="OurservicesprivateService.ConfirmCodePassword != ''">
+
+                  <mat-form-field appearance="fill">
+                      <mat-label>New Password</mat-label>
+                      <input matInput placeholder="NewConfirmCodePassword" [formControl]="NewConfirmCodePassword" required>
+                      <mat-error *ngIf="NewConfirmCodePassword.hasError('required')">Password Is Required</mat-error>
+                    </mat-form-field>
+                    <button mat-button color="accent" (click) ='UpdatePasswordUser()' [disabled]="!NewConfirmCodePassword.valid">Enter Your Code</button>
+              </div>
+          </div>
+          </div>
+      </div>
+      <div class="col-md-12">
+       
+      </div>
+      <hr>
+      <div class="col-md-12">
+        <div *ngIf="MyRole == 'Customer'">
+          <button (click) = 'getLocation()' class="btn btn-secondary">getLocation</button>
+          </div>
+      </div>
+  </div>
+  
+</div>
+
+<div class="col-md-4">
+  <div class="p-3 py-5">
+      <div class="d-flex justify-content-between align-items-center experience">
+        
+      <div class="col-md-12">
+        <form method="post" [formGroup]='FormUpdate' (submit)='Update()'>
+    
+          <mat-form-field appearance="fill">
+              <mat-label>New PhoneNumber</mat-label>
+              <input matInput placeholder="PhoneNumber" formControlName="PhoneNumber" required>
+              <mat-error *ngIf="FormUpdate.controls.PhoneNumber.hasError('required')">PhoneNumber Is Required</mat-error>
+          </mat-form-field>
+      
+          <mat-form-field appearance="fill">
+              <mat-label>New NickName</mat-label>
+              <input matInput placeholder="NickName" formControlName="NickName" required>
+              <mat-error *ngIf="FormUpdate.controls.NickName.hasError('required')">NickName Is Required</mat-error>
+          </mat-form-field>
+      <br>
+          <mat-radio-group aria-label="Select an option" formControlName="Gender">
+              <mat-radio-button value='True'>Male</mat-radio-button >
+              <mat-radio-button value='False'>Female</mat-radio-button>
+              <mat-error *ngIf="FormUpdate.controls.Gender.hasError('required')">Gender Is Required</mat-error>
+          </mat-radio-group>
+          <br>
+      
+          <div *ngIf="MyRole == 'Customer'">
+          <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>Choose a BirthDay</mat-label>
+              <input matInput [matDatepicker]="picker" formControlName="BirthDay">
+              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker touchUi #picker></mat-datepicker>
+            </mat-form-field>
+          </div>
+          
+          <button mat-button color="accent" type="submit" [disabled]="FormUpdate.invalid">Submit</button>
+      
+      </form>
+      <div class="col-md-12">
+        
+  </div>
+
+</div>
+</div>
+</div>

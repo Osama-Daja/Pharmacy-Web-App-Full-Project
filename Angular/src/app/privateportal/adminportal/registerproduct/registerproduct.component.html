@@ -1,0 +1,78 @@
+<form method="post" [formGroup]='FormRegisterProduct' (submit)='Submit()'>
+  <mat-form-field appearance="fill" hidden>
+    <input type="number" matInput placeholder="Id" formControlName="Id" required>
+  </mat-form-field>
+
+  <div class="row">
+    <div class="col-md-4">
+
+    </div>
+    <div class="col-md-4"> 
+      <img style="height: 10pc; width: 10pc;" class="center rounded float-center th img-circle" [src]="URLForImage">
+      <input type="file" name="image" (change)="fileProgress($event)" style="margin-left: 38px; margin-top: 5px; margin-bottom: 10px;"/>
+    </div>
+    <div class="col-md-4"> 
+
+    </div>
+  </div> 
+<br>
+  <div class="row">
+    <div class="col-md-6">
+      <mat-form-field appearance="fill" class="col-md-6">
+        <mat-label>{{MainPortal.Lang['name']}}</mat-label>
+        <input matInput placeholder="{{MainPortal.Lang['name']}}" formControlName="Name" required>
+        <mat-error *ngIf="FormRegisterProduct.controls.Name.hasError('required')">Name Is Required</mat-error>
+      </mat-form-field>
+    </div>
+    <div class="col-md-6"> 
+      <mat-form-field appearance="fill" class="col-md-6">
+        <mat-label>{{MainPortal.Lang['Company Of Origin']}}</mat-label>
+        <mat-select type="number" formControlName="CompanyOfOriginId">
+          <mat-option *ngFor="let B of OurservicesadminService.ListCompanyOfOrigin" value="{{B.id}}">{{B.name}}</mat-option>
+        </mat-select>
+        <mat-error *ngIf="FormRegisterProduct.controls.CompanyOfOriginId.hasError('required')">Company Of Origin Is Required</mat-error>
+      </mat-form-field>
+    </div>
+  </div> 
+
+  <div class="row">
+    <div class="col-md-6">
+      <mat-form-field appearance="fill" class="col-md-6">
+        <mat-label>{{MainPortal.Lang['Price']}}</mat-label>
+        <input type="number" matInput placeholder="{{MainPortal.Lang['Price']}}" formControlName="Price" required>
+        <mat-error *ngIf="FormRegisterProduct.controls.Price.hasError('required')">Price Is Required</mat-error>
+      </mat-form-field>
+    </div>
+    <div class="col-md-6"> 
+      <mat-form-field class="example-full-width" appearance="fill" class="col-md-6">
+        <mat-label>{{MainPortal.Lang['description']}}</mat-label>
+        <textarea matInput placeholder="{{MainPortal.Lang['description']}}" formControlName="Description" required></textarea>
+        <mat-error *ngIf="FormRegisterProduct.controls.Description.hasError('required')">Description Is Required</mat-error>
+
+      </mat-form-field>
+
+    </div>
+  </div> 
+  
+  <div class="row">
+    <div class="col-md-6">
+      <mat-form-field appearance="fill" class="col-md-6">
+        <mat-label>{{MainPortal.Lang['Category']}}</mat-label>
+        <mat-select type="number" formControlName="CategoryId">
+          <mat-option *ngFor="let B of OurservicesadminService.ListCategory" value="{{B.id}}">{{B.name}}</mat-option>
+        </mat-select>
+        <mat-error *ngIf="FormRegisterProduct.controls.CategoryId.hasError('required')">Category Is Required</mat-error>
+      </mat-form-field>
+    </div>
+    <div class="col-md-3"> 
+      <button mat-button color="accent" style="float: right;bottom: -18px;" type="submit" [disabled]="FormRegisterProduct.invalid">{{MainPortal.Lang['Submit']}}</button>
+ 
+      <button type="button" mat-button style="float: right; margin-right: 1rem;bottom: -18px;" color="warn" (click)="Clear()">{{MainPortal.Lang['Clear']}}</button>
+    </div>
+  </div> 
+
+
+
+
+
+</form>

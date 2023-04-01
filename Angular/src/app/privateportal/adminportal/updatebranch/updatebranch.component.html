@@ -1,0 +1,28 @@
+
+<form method="post" [formGroup]='OurservicesadminService.FormBranchUpdate' (submit)='Submit()'>
+    <mat-form-field appearance="fill">
+      <mat-label>Enter Branch Name</mat-label>
+      <input matInput placeholder="Name" formControlName="Name" required>
+      <mat-error *ngIf="OurservicesadminService.FormBranchUpdate.controls.Name.hasError('required')">Name Is Required</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Enter Branch Description</mat-label>
+      <input matInput placeholder="Description" formControlName="Description" required>
+      <mat-error *ngIf="OurservicesadminService.FormBranchUpdate.controls.Description.hasError('required')">Description Is Required</mat-error>
+    </mat-form-field>
+
+    <button type="button" style="width:10%" (click)='GetLocation()' class="blue fluid ui button">
+      <i class="fas fa-map-marked-alt"></i>
+    </button>
+
+    
+    <button mat-button color="accent" type="submit" [disabled]="OurservicesadminService.FormBranchUpdate.invalid">Submit</button>
+<hr>
+</form>
+
+
+
+
+
+

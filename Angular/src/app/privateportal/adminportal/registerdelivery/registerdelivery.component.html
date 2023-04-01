@@ -1,0 +1,194 @@
+<form method="post" [formGroup]='FormDeliveryRegiter' (submit)='Submit()'>
+  <mat-form-field appearance="fill" hidden>
+    <input matInput placeholder="Id" formControlName="Id" required>
+  </mat-form-field>
+  <div class="row">
+    <div class="col-md-6">
+      <mat-form-field appearance="fill" class="col-md-6">
+        <mat-label>{{MainPortal.Lang['UserName']}}</mat-label>
+        <input matInput placeholder="{{MainPortal.Lang['UserName']}}" formControlName="UserName" required>
+        <mat-error *ngIf="FormDeliveryRegiter.controls.UserName.hasError('required')">UserName Is Required</mat-error>
+      </mat-form-field>
+    </div>
+    <div class="col-md-6">
+      <mat-form-field
+        *ngIf="FormDeliveryRegiter.controls.Id.value == 0 || FormDeliveryRegiter.controls.Id.value == null"
+        appearance="fill" class="col-md-6">
+        <mat-label>{{MainPortal.Lang['Password']}}</mat-label>
+        <input type="password" matInput placeholder="{{MainPortal.Lang['Password']}}" formControlName="Password">
+      </mat-form-field>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6">
+      <mat-form-field appearance="fill" class="col-md-6">
+        <mat-label>{{MainPortal.Lang['Email']}}</mat-label>
+        <input matInput placeholder="Email@Email.com" formControlName="Email" required>
+        <mat-error *ngIf="FormDeliveryRegiter.controls.Email.hasError('required')">Email Is Required</mat-error>
+        <mat-error *ngIf="FormDeliveryRegiter.controls.Email.hasError('email')">Should Be Email</mat-error>
+      </mat-form-field>
+    </div>
+    <div class="col-md-6">
+      <mat-form-field appearance="fill" class="col-md-6">
+        <mat-label>{{MainPortal.Lang['PhoneNumber']}}</mat-label>
+        <input type="number" matInput placeholder="{{MainPortal.Lang['PhoneNumber']}}" formControlName="PhoneNumber"
+          required>
+        <mat-error *ngIf="FormDeliveryRegiter.controls.PhoneNumber.hasError('required')">PhoneNumber Is Required
+        </mat-error>
+      </mat-form-field>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6">
+      <mat-form-field appearance="fill" class="col-md-6">
+        <mat-label>{{MainPortal.Lang['NickName']}}</mat-label>
+        <input matInput placeholder="{{MainPortal.Lang['NickName']}}" formControlName="NickName" required>
+        <mat-error *ngIf="FormDeliveryRegiter.controls.NickName.hasError('required')">NickName Is Required</mat-error>
+      </mat-form-field>
+    </div>
+    <div class="col-md-6">
+      <mat-radio-group aria-label="Select an option" formControlName="Gender" class="col-md-6">
+        <div class="col-md-3">
+          <mat-radio-button value='True'>{{MainPortal.Lang['Male']}}</mat-radio-button>
+        </div>
+        <div class="col-md-3">
+          <mat-radio-button value='False'>{{MainPortal.Lang['Female']}}</mat-radio-button>
+        </div>
+
+        <mat-error *ngIf="FormDeliveryRegiter.controls.Gender.hasError('required')">Gender Is Required</mat-error>
+      </mat-radio-group>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <mat-form-field
+        *ngIf="FormDeliveryRegiter.controls.Id.value == 0 || FormDeliveryRegiter.controls.Id.value == null"
+        appearance="fill" class="col-md-6">
+        <mat-label>{{MainPortal.Lang['Salary']}}</mat-label>
+        <input type="number" matInput placeholder="{{MainPortal.Lang['Salary']}}" formControlName="Salary">
+      </mat-form-field>
+    </div>
+    <div class="col-md-3">
+      <button mat-button color="accent" style="float: right;bottom: -18px;" type="submit"
+        [disabled]="FormDeliveryRegiter.invalid">{{MainPortal.Lang['Submit']}}</button>
+
+      <button type="button" mat-button style="float: right; margin-right: 1rem;bottom: -18px;" color="warn"
+        (click)="Clear()">{{MainPortal.Lang['Clear']}}</button>
+    </div>
+
+  </div>
+
+</form>
+
+
+<div class="row">
+  <div class="col-md-12">
+    <div class="table-responsive-lg table-responsive-md table-responsive-sm">
+
+      <table class="table table-sm table-hover mytable">
+        <thead class="thead-light">
+          <tr>
+
+            <th>
+              {{MainPortal.Lang['Image']}}
+            </th>
+            <th>
+              {{MainPortal.Lang['UserName']}}
+            </th>
+            <th>
+              {{MainPortal.Lang['Email']}}
+            </th>
+            <th>
+
+              {{MainPortal.Lang['PhoneNumber']}}
+            </th>
+            <th>
+
+              {{MainPortal.Lang['NickName']}}
+            </th>
+            <th>
+
+              {{MainPortal.Lang['Salary']}}
+            </th>
+            <th>
+
+              {{MainPortal.Lang['Gender']}}
+            </th>
+            <th>
+              {{MainPortal.Lang['Block']}}
+            </th>
+
+
+            <th></th>
+
+            <th>
+
+            </th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+
+
+          <tr *ngFor="let Delivery of OurservicesadminService.ListDelivery">
+
+
+            <td>
+              <img *ngIf="Delivery.image != ''" style="height: 30px;width: 30px;"
+                [src]="OurservicesadminService.URLIMG + Delivery.image">
+              <img *ngIf="Delivery.image == ''" style="height: 30px;width: 30px;" src="../../../../assets/IMG/user.png">
+            </td>
+
+            <td>
+              {{Delivery.userName}}
+            </td>
+            <td>
+              {{Delivery.email}}
+            </td>
+            <td>
+              {{Delivery.phoneNumber}}
+            </td>
+            <td>
+              {{Delivery.nickName}}
+            </td>
+            <td>
+              {{Delivery.salary}} $
+            </td>
+            <td>
+              <button *ngIf='Delivery.gender' class="orange fluid ui button">
+                <i class="fas fa-male"></i>
+              </button>
+              <button *ngIf='!Delivery.gender' class="yellow fluid ui button">
+                <i class="fas fa-female"></i>
+              </button>
+            </td>
+            <td>
+              <button (click)='UpdateBlockUserForAdmin(Delivery.id,Delivery.block)' *ngIf='Delivery.block'
+                class="red fluid ui button">
+                <i class="fas fa-lock"></i>
+              </button>
+              <button (click)='UpdateBlockUserForAdmin(Delivery.id,Delivery.block)' *ngIf='!Delivery.block'
+                class="green fluid ui button">
+                <i class="fas fa-lock-open"></i>
+              </button>
+            </td>
+
+            <td>
+              <button (click)='Edit(Delivery)' class="green fluid ui button">
+                <i style="color: white;" class="fas fa-edit"></i>
+              </button>
+            </td>
+            <td>
+              <button (click)='DeleteDelivery(Delivery.id)' class="red fluid ui button">
+                <i style="color: white;" class="fas fa-trash-alt"></i>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+    </div>
+  </div>
+</div>

@@ -1,0 +1,13 @@
+
+#BranchMap {
+    height: 700px;
+    width: 100%;
+    min-width: 80%;
+    position: relative;
+  } 
+
+.RegisterForm{
+  /* display: flex; */
+  justify-content: center;
+  flex-direction: row;
+}

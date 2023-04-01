@@ -1,0 +1,108 @@
+<div class="row" id="print-div" >
+
+  <div class="row">
+    <div class="col-3"></div>
+    <div class="col-6" style="
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    ">
+      <img *ngIf="OurservicesprivateService.DetailsBag.Bag.image != ''" style="height: 60px;width: 60px;"
+        [src]="OurservicesprivateService.URLIMG + OurservicesprivateService.DetailsBag.Bag.image">
+        <img *ngIf="OurservicesprivateService.DetailsBag.Bag.image == ''" style="height: 60px;width: 60px;"
+        src="../../../../assets/IMG/user.png">
+      <hr>
+      <div class="row">
+        <div class="col-4">{{OurservicesprivateService.DetailsBag.Bag.nickName}}</div>
+        <div class="col-4"></div>
+        <div class="col-4">{{OurservicesprivateService.DetailsBag.Bag.phoneNumber}}</div>
+      </div>
+    </div>
+    <div class="col-3"></div>
+  </div>
+
+
+
+
+  <div class="row">
+    <div class="col-2"></div>
+    <div class="col-8" style="
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+        ">
+      <img style="height: 60px;width: 60px;" src="../../../../assets/IMG/first-aid-kit.png">
+      <hr>
+      <div class="row">
+        <div class="col-4">Totoal Price : {{OurservicesprivateService.DetailsBag.Bag.totalPrice}} $</div>
+        <div class="col-4">
+          <button *ngIf='OurservicesprivateService.DetailsBag.Bag.status' class="green fluid ui button"><i
+              class="fab fa-cc-amazon-pay"></i></button>
+          <button *ngIf='!OurservicesprivateService.DetailsBag.Bag.status' class="blue fluid ui button"><i
+              class="fas fa-hand-holding-usd"></i></button>
+        </div>
+        <div class="col-4">Date : {{OurservicesprivateService.DetailsBag.Bag.currentDate | date : 'yyyy-MM-dd'}}</div>
+      </div>
+    </div>
+    <div class="col-2"></div>
+  </div>
+
+
+  <div class="row">
+    <div class="col-md-12">
+      <div class="table-responsive-lg table-responsive-md table-responsive-sm">
+
+        <table class="table table-sm table-hover mytable">
+          <thead class="thead-light">
+            <tr>
+              <th>
+                Name
+              </th>
+              <th>
+                Price
+              </th>
+              <th>
+                Quantity
+              </th>
+              <th>
+                &nbsp;
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let P of OurservicesprivateService.DetailsBag.Bag.product">
+              <td>
+                <div class="row">
+                  <div class="col-5"><img style="height: 30px;width: 30px;"
+                      [src]="OurservicesprivateService.URLIMG + P.productImage"></div>
+                  <div class="col-7">{{P.productName}}</div>
+                </div>
+              </td>
+              <td>
+                {{P.productPrice}} $
+              </td>
+              <td>
+                {{P.quantity}}
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+      </div>
+    </div>
+  </div>
+
+
+</div>
+
+<div class="row" *ngIf='OurservicesprivateService.DetailsBag.Bag.status == 1'>
+  <div class="col-md-4">
+    <button type="button" class="btn btn-success btn-lg btn-block" (click)='DoneOrderDelivery()'>Done</button>
+  </div>
+  <div class="col-md-4">
+    <button type="button" class="btn btn-success btn-lg btn-block" (click)='Print()'>Print</button>
+  </div>
+  <div class="col-md-4">
+    <button class="btn btn-success btn-block" (click)="openPDF()">Download PDF</button>
+  </div>
+</div>

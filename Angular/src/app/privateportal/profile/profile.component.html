@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profile Card</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+</head>
+<body>
+  <div class="profile-card">
+    <div class="card-header">
+      <div class="pic">
+        <img *ngIf="OurservicesprivateService.MyAccountData.image != ''"style="height: 30px;width: 30px;" [src]="OurservicesprivateService.URLIMG + OurservicesprivateService.MyAccountData.image">
+        <img *ngIf="OurservicesprivateService.MyAccountData.image == ''" style="height: 30px;width: 30px;" src="../../../assets/IMG/user.png">
+      </div>
+      <br>
+      <div class="desc">User Name :{{OurservicesprivateService.MyAccountData.userName}}</div>
+      <br>
+      <div class="desc">NickName  :{{OurservicesprivateService.MyAccountData.nickName}}</div>
+     
+      <br>
+      <div class="desc">Email :{{OurservicesprivateService.MyAccountData.email}}</div>
+      <br>
+      <div class="desc">Phone Number :{{OurservicesprivateService.MyAccountData.phoneNumber}}</div>
+      <br>
+      <div class="desc" *ngIf="OurservicesprivateService.MyAccountData.gender">Gender  :  <i class="fas fa-male"></i> </div>
+      <div class="desc" *ngIf="!OurservicesprivateService.MyAccountData.gender">Gender  :  <i class="fas fa-female"></i> </div>
+      <br>
+    </div>
+    <div class="card-footer">
+      <div class="numbers">
+        <div class="item" *ngIf="MyRole != 'Customer'">
+            <div >
+              <div class="desc">Salary : {{OurservicesprivateService.MyAccountData.salary}} $</div>
+            </div>
+        </div>
+    
+         <div class="item" *ngIf="MyRole == 'Customer'">
+            <div >
+                BirthDay : {{OurservicesprivateService.MyAccountData.birthDay | date:'yyyy-MM-dd'}}
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

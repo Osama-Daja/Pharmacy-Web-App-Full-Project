@@ -1,0 +1,38 @@
+<div class="panel">
+  <h2>LOGIN</h2>
+  <div class="formset">
+    <div class="form-group">
+      <form [formGroup]="formLogin">
+
+        <mat-form-field class="form-group">
+          <mat-label>User Name:</mat-label>
+
+          <input matInput type="text" formControlName="UserName" class="form-control" placeholder="Enter UserName">
+          <mat-error *ngIf="formLogin.controls.UserName.hasError('required') ">
+            Please Enter your Username
+          </mat-error>
+
+        </mat-form-field>
+
+        <mat-form-field class="form-group">
+          <mat-label>Password:</mat-label>
+
+          <input matInput type="password" formControlName="Password" class="form-control" placeholder="Enter UserName">
+          <mat-error
+            *ngIf="formLogin.controls.Password.hasError('required') && !formLogin.controls.Password.hasError('minlength')">
+            Please Enter your password
+          </mat-error>
+          <mat-error *ngIf="formLogin.controls.Password.hasError('minlength') ">
+            Please Enter strong password
+          </mat-error>
+        </mat-form-field>
+        <div class="form-check">
+          <input formControlName = 'RememberMe' type="checkbox" class="form-check-input" id="exampleCheck1">
+          <label class="form-check-label" for="exampleCheck1">Remember Me</label>
+        </div>
+        <button type="submit" class="btn" (click)='submit()' [disabled]="formLogin.invalid">Submit</button>
+
+      </form>
+    </div>
+  </div>
+</div>

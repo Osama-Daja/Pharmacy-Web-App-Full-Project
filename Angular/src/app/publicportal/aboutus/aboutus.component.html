@@ -1,0 +1,41 @@
+
+<div class="container-fluid">
+  <div class="row row-about">
+
+    <img *ngIf= "OurservicespublicService.AboutUs.image == ''" src="../../../assets/IMG/aboutus/image4.jpeg" alt="" class="about-main-img">
+    <img *ngIf= "OurservicespublicService.AboutUs.image != ''" 
+    [src] = 'OurservicespublicService.URLIMG + OurservicespublicService.AboutUs.imagePath' alt="" class="about-main-img">
+
+    <div class="col-md-5 about-main-text">
+      <h3>To protect your <span>family</span></h3>
+      <h5>We <span>provide</span> our services and reach you anytime and anywhere.</h5>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row row-about">
+
+      <div class="col-md-6 special-product-details">
+        <h3>Our Story</h3>
+        <p>
+          {{OurservicespublicService.AboutUs.text}}
+        </p>
+      </div>
+      <div class="col-md-6">
+        <div class="image-container">
+          <img alt="" src="../../../assets/IMG/aboutus/floating-image1.png" class="table-img">
+          <img alt="" src="../../../assets/IMG/aboutus/floating-image2.png" class="coloured-card-btn-img">
+          <img alt="" src="../../../assets/IMG/aboutus/floating-image3.png" class="coloured-card-img">
+          <img alt="" src="../../../assets/IMG/aboutus/floating-image4.png" class="linkedin-btn-img">
+          <img src="../../../assets/IMG/aboutus/image-main.png" class="w-100">
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+  <div class="row row-about row-odd">
+      <div class="Map">
+          <div  id='AboutUsMap' class="AboutUsMap"></div>    
+      </div>
+  </div>
+</div>

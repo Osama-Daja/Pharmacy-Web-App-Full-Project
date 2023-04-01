@@ -1,0 +1,78 @@
+<form method="post" [formGroup]='FormSearch' (submit)='Submit()'>
+
+  <mat-form-field appearance="fill" class="col-md-4 col-sm-12">
+    <mat-label>{{MainPortal.Lang['name']}}</mat-label>
+    <input matInput placeholder="{{MainPortal.Lang['name']}}" formControlName="Name" required>
+  </mat-form-field>
+
+
+
+  <mat-form-field appearance="fill" class="col-md-4 col-sm-12">
+    <mat-label>{{MainPortal.Lang['Company Of Origin']}}</mat-label>
+    <mat-select type="number" formControlName="CompanyOfOriginId">
+      <mat-option *ngFor="let B of OurservicesadminService.ListCompanyOfOrigin" value="{{B.id}}">{{B.name}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+
+
+  <mat-form-field appearance="fill" class="col-md-4 col-sm-12">
+    <mat-label>{{MainPortal.Lang['Category']}}</mat-label>
+    <mat-select type="number" formControlName="CategoryId">
+      <mat-option *ngFor="let B of OurservicesadminService.ListCategory" value="{{B.id}}">{{B.name}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+
+  <div class="col-md-12">
+
+    <button mat-button color="accent" style="float: right;" type="submit">{{MainPortal.Lang['Submit']}}</button>
+    <button type="button" style="float: right;margin-right: 1rem;" mat-button color="warn" (click)="Clear()">{{MainPortal.Lang['Clear']}}</button>
+  </div>
+</form>
+
+<div class="row">
+  <div class="col-md-12">
+    <div class="table-responsive-lg table-responsive-md table-responsive-sm">
+
+      <table class="table table-sm table-hover mytable">
+        <thead class="thead-light">
+          <tr>
+            <td>{{MainPortal.Lang['Image']}}</td>
+            <td>{{MainPortal.Lang['Prdouct']}}</td>
+            <td>{{MainPortal.Lang['Category']}}</td>
+            <td>{{MainPortal.Lang['CompanyName']}}</td>
+            <td>{{MainPortal.Lang['Price']}}</td>
+            <td>{{MainPortal.Lang['producedate']}}</td>
+            <td>{{MainPortal.Lang['expiredDate']}}</td>
+            <td></td>
+            <td></td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor='let P of OurservicescustomerService.ListProducts'>
+            <td> <img [src]="OurservicescustomerService.URLIMG + P.image" style="width: 30px; height: 30px ;" alt="">
+            </td>
+            <td>{{P.name}}</td>
+            <td>{{P.categoryName}}</td>
+            <td>{{P.companyOfOriginName}}</td>
+            <td>{{P.price}} $</td>
+            <td>{{P.produceDate | date : 'yyyy-MM-dd'}}</td>
+            <td>{{P.expiredDate | date : 'yyyy-MM-dd'}}</td>
+            <td>
+              <button (click)='MarketProductDetails(P)' class="blue fluid ui button">
+                <i class="fas fa-info"></i>
+              </button>
+            </td>
+            <td>
+              <button *ngIf='P.quantityStock - P.quantityOrder > 0' (click)='AddOrder(P)' class="green fluid ui button">
+                <i class="fas fa-plus"></i>
+              </button>
+              <p *ngIf='P.quantityStock - P.quantityOrder <= 0'>Empty</p>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

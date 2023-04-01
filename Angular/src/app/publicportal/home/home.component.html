@@ -1,0 +1,186 @@
+
+
+        <div class="container-fluid">
+
+            <!-- start Slider -->
+            <div id="main-slider" class="carousel slide" data-ride="carousel">
+                <ol class="carousel-indicators">
+                    <li data-target="#main-slider" *ngFor="let S of OurservicespublicService.ListSlider; let index = index"
+                     data-slide-to="index"></li>
+                </ol>
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img class="d-block w-100" src="../../../assets/IMG/BackGround/pexels-mikhail-nilov-7470822.jpg" alt="First slide">
+                        <div class="carousel-caption d-md-block">
+                            <h4 style="font-size: 3pc;">
+                                Welcome To Tahaluf
+                            </h4>
+                            <h6 style="font-size: 1pc;">Online Pharmacy</h6>
+                        </div>
+                    </div>
+                    <div class="carousel-item" *ngFor='let S of OurservicespublicService.ListSlider'>
+                        <img class="d-block w-100" [src]="OurservicespublicService.URLIMG + S.sliderImg" alt="Second slide">
+                        <div class="carousel-caption  d-md-block">
+                            <h4 style="font-size: 3pc;">
+                                <hr>
+                                {{S.titleText}}</h4>
+                            <h6 style="font-size: 1pc;">{{S.briefText}}</h6>
+                        </div>
+                    </div>
+                </div>
+                <a class="carousel-control-prev" href="#main-slider" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#main-slider" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+            <!-- end Slider -->
+
+            <!-- start home-main -->
+            <!-- start Category -->
+            <div class="row row-even">
+                <p> Product Categories</p>
+            </div>
+            <div class="row special-product">
+                <div class="row-cat mb-5">
+                    <div class="container owl-2-style">
+                        <div class="owl-carousel owl-2">
+                            <div class="cat-slider-item" *ngFor='let C of OurservicespublicService.ListCategory' (click) = "GetByCategoryIdTrendingProduct(C.id)">
+                                <a><img [src]="OurservicespublicService.URLIMG + C.image" alt="Image" class="img-fluid"></a>
+                                <h3><a>{{C.name}}</a></h3>
+                            </div>
+                            
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <!-- end Category -->
+
+            <!-- start testamonial part-->
+            <div class="row special-product">
+                <div class="row testamonial">
+                    <div class="col-md-6 special-testamonial-details" data-aos="fade-right">
+                        <h3>
+                            Testamonial
+                        </h3>
+                        <hr>
+                        <h5>Everybody loves Online Pharmacy.</h5>
+                        <br>
+                        <h5>Designed to make it easier for patients to fill prescriptions and stay on their medications.
+                        </h5>
+                        <br>
+                        <h5>We want to hear from you.</h5>
+                    </div>
+                    <div class="col-md-6 ">
+                        <div id="test-slider" class="carousel slide" data-ride="carousel">
+                        <ol class="carousel-indicators">
+                          <li data-target="#test-slider" *ngFor="let a of OurservicespublicService.ListTestimonial; let index = index"
+                          data-slide-to="index"></li>
+                        </ol>
+                        <div class="carousel-inner">
+
+                          <div class="carousel-item active">
+                            <div class="blog-card">
+                                <div class="blog-card__square"></div>
+                                <div class="blog-card__circle"></div>
+                                <div class="test-qoute">
+                                    <q>
+                                        Tahaluf Employees
+                                    </q>
+                                    <span>Tahaluf Service</span>
+                                </div>
+
+                            </div>
+                            <img src="../../../assets/IMG/Logo/logo1.png">
+                          </div>
+
+                          <div class="carousel-item" *ngFor= 'let T of OurservicespublicService.ListTestimonial'>
+                            <div class="blog-card">
+                                <div class="blog-card__square"></div>
+                                <div class="blog-card__circle"></div>
+                                <div class="test-qoute">
+                                    <q>{{T.text}}</q>
+                                    <span>{{T.nickName}}</span>
+                                </div>
+
+                            </div>
+                            <img *ngIf="T.image!=''"  [src] = 'OurservicespublicService.URLIMG + T.image'>
+                            <img *ngIf="T.image==''" src="../../../assets/IMG/user.png">
+                          </div>
+
+                        </div>
+                        <a class="carousel-control-prev" href="#test-slider" role="button" data-slide="prev">
+                          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                          <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="carousel-control-next" href="#test-slider" role="button" data-slide="next">
+                          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                          <span class="sr-only">Next</span>
+                        </a>
+                      </div>
+                    </div> 
+                    
+                </div>
+            </div>
+
+
+            <!-- start testamonial part-->
+
+
+            <div class="row row-odd">
+                <p> Special Product</p>
+            </div>
+            <div class="row special-product" *ngIf = 'OurservicespublicService.TrendingProductValue != undefined'>
+                <div class="col-md-6">
+                    <div class="img_producto_container" data-scale="1.6">
+                        <img class="dslc-lightbox-image img_producto"
+                            [src]='OurservicespublicService.URLIMG + OurservicespublicService.TrendingProductValue.image'>
+                    </div>
+                </div>
+                <div class="col-md-6 special-product-details" data-aos="fade-left">
+                    <div class="col-md-12">
+                        <h3>
+                            {{OurservicespublicService.TrendingProductValue.name}}
+                        </h3>
+                        <p>
+                            {{OurservicespublicService.TrendingProductValue.description}}
+                        </p>
+                        <p>
+                            <strong>{{OurservicespublicService.TrendingProductValue.price}} $</strong>
+                        </p>
+                    </div>
+
+
+                </div>
+                <div style="clear: both;"></div>
+            </div>
+
+            <div class="row row-even">
+                <p> Trending Product </p>
+            </div>
+
+            <!-- start Prdocut cards -->
+
+            <div *ngIf = 'OurservicespublicService.ListAllTrendingProduct.length > 0' class="page-content">
+                <div class="card" *ngFor ='let P of OurservicespublicService.ListAllTrendingProduct'
+                 style="background-image: url('{{OurservicespublicService.URLIMG + P.image}}');" data-aos="zoom-in-up">
+                    <div class="content">
+                        <h2 class="title">{{P.name}}</h2>
+                        <p class="copy">
+                            {{P.price}} $
+                        </p>
+                        <button class="product-btn" (click) = "Details(P)">Details</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- end Prdocut cards -->
+            <!-- end home-main -->
+        </div>
+
+
+

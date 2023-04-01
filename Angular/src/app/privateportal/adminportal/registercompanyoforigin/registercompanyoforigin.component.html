@@ -1,0 +1,87 @@
+<form method="post" [formGroup]='MyForm' (submit)='Submit()'>
+  <mat-form-field appearance="fill" hidden>
+    <input type="number" readonly matInput placeholder="Id" formControlName="Id" required>
+  </mat-form-field>
+
+  <div class="row">
+    <div class="col-md-6">
+      <mat-form-field appearance="fill" class="col-md-12">
+        <mat-label>{{MainPortal.Lang['name']}}</mat-label>
+        <input matInput placeholder="{{MainPortal.Lang['name']}}" formControlName="Name" required>
+        <mat-error *ngIf="MyForm.controls.Name.hasError('required')">Name Is Required</mat-error>
+      </mat-form-field>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6">
+      <mat-form-field class="example-full-width" appearance="fill"  class="col-md-12">
+        <mat-label>{{MainPortal.Lang['description']}}</mat-label>
+        <textarea matInput cols="50" rows="10" placeholder="{{MainPortal.Lang['description']}}"
+          formControlName="Description" required></textarea>
+        <mat-error *ngIf="MyForm.controls.Description.hasError('required')">Description Is Required</mat-error>
+      </mat-form-field>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <button mat-button color="accent" style="float: right; margin-right: 1rem;" type="submit" [disabled]="MyForm.invalid">{{MainPortal.Lang['Submit']}}</button>
+
+      <button type="button" mat-button style="float: right; margin-right: 1rem;" color="warn" (click)="Clear()">{{MainPortal.Lang['Clear']}}</button>
+
+    
+    </div>
+  </div>
+  
+
+
+
+  <hr>
+</form>
+
+<div class="row">
+  <div class="col-md-12">
+    <div class="table-responsive-lg table-responsive-md table-responsive-sm">
+
+      <table class="table table-sm table-hover mytable">
+        <thead class="thead-light">
+          <tr>
+
+            <th>
+              {{MainPortal.Lang['name']}}
+            </th>
+            <th>
+
+              {{MainPortal.Lang['description']}}
+            </th>
+            <th>
+
+            </th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let Admin of OurservicesadminService.ListCompanyOfOrigin">
+            <td>
+              {{Admin.name}}
+            </td>
+            <td>
+              <pre style="white-space: pre-wrap;">{{Admin.description}}</pre>
+            </td>
+            <td>
+              <button (click)='Edit(Admin)' class="green fluid ui button">
+                <i style="color: white;" class="fas fa-edit"></i>
+              </button>
+            </td>
+            <td>
+              <button (click)='Delete(Admin.id)' class="red fluid ui button">
+                <i style="color: white;" class="fas fa-trash-alt"></i>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+    </div>
+  </div>
+</div>

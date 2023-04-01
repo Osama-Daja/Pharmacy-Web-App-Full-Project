@@ -1,0 +1,17 @@
+
+
+
+<form method="post" [formGroup]='MyForm' (submit)='Submit()'>
+   
+
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Leave a comment</mat-label>
+    <textarea matInput placeholder="Text" formControlName="Text"></textarea>
+    <mat-error *ngIf="MyForm.controls.Text.hasError('required')">Text Is Required</mat-error>
+    <mat-error *ngIf="MyForm.controls.Text.hasError('required')">Max Length is 150</mat-error>
+  </mat-form-field>
+  <hr>
+  <button mat-button color="accent" type="submit" [disabled]="MyForm.invalid" >Submit</button>
+  </form>
+
+

@@ -1,0 +1,9 @@
+.fa-star{
+    color:#000;
+}
+.fa-star:hover{
+    color: #e72d3c;
+}
+.active-fa{
+    color: #e72d3c;
+}

@@ -1,0 +1,36 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            <img [src]="OurservicespublicService.URLIMG + OurservicespublicService.DetailsProduct.image"
+                class="img-responsive">
+        </div>
+
+        <div class="col-md-8">
+
+            <div class="col-md-12">
+                <h3><b>Product Details</b></h3>
+            </div>
+
+
+            <div class="col-md-12">
+                <p><b>Product:</b> {{OurservicespublicService.DetailsProduct.name}}</p>
+            </div>
+            <div class="col-md-12">
+                <p><b>Category:</b> <img style="height: 30px; width: 30px;" [src]="OurservicespublicService.URLIMG + OurservicespublicService.DetailsProduct.categoryImage"> {{OurservicespublicService.DetailsProduct.categoryName}}</p>
+            </div>
+
+            <div class="col-md-12">
+                <p><b>Description:</b> {{OurservicespublicService.DetailsProduct.categoryDescription}}</p>
+            </div>
+            <div class="col-md-12">
+                <p><b>Price:</b> {{OurservicespublicService.DetailsProduct.price}} $</p>
+            </div>
+
+            
+        </div>
+
+        <div style="clear: both;">
+
+        </div>
+    </div>
+</div>

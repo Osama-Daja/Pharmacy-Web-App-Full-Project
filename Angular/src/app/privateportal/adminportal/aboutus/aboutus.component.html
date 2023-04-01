@@ -1,0 +1,51 @@
+<div class="row">
+  <div class="row">
+    <div class="col-lg-4 col-md-4 col-sm-4 ">
+
+    </div>
+    <div class="col-lg-4 col-md-4 col-sm-4 ">
+      <img style="height: 10pc; width: 10pc;" class="center rounded float-center th img-circle" [src]="ImagePreview">
+      <hr>
+      <input type="file" name="image" (change)="fileProgress($event)" />
+      <hr>
+    </div>
+    <div class="col-lg-4 col-md-4 col-sm-4 ">
+      <div class="col-md-4">
+        <button mat-button color="accent" type="submit" (click)='PostAboutUsImage()'
+          [disabled]="File.invalid">Save</button>
+      </div>
+    </div>
+  </div>
+
+ 
+
+  <div class="row">
+    <div class="col-md-12">
+      <mat-form-field appearance="fill" class="col-md-12">
+        <mat-label>Insert Story</mat-label>
+        <textarea matInput placeholder="text" [formControl]="text" cols = "200" rows="10" required></textarea>
+        <mat-error *ngIf="text.hasError('required')">Please Insert Story</mat-error>
+      </mat-form-field>
+    </div>
+    <div class="col-md-12">
+      <button mat-button color="accent" type="submit" (click)='PostAboutUsText()'
+        [disabled]="text.invalid">Submit</button>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-4">
+      <p>Press to insert Main Branch Location</p>
+    </div>
+    <div class="col-md-4">
+      <button type="button" style="height: 2.7rem; clear: both;" (click)='GetLocation()' class="blue fluid ui button">
+        <i class="fas fa-map-marked-alt"></i>
+      </button>
+    </div>
+    <div class="col-md-4">
+    </div>
+  </div>
+
+
+ 
+</div>

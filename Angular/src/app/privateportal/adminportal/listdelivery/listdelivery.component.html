@@ -1,0 +1,218 @@
+
+<div class="warpper">
+  <input class="radio" id="one" name="group" type="radio" checked>
+  <input class="radio" id="two" name="group" type="radio">
+  <div class="tabs">
+    <label class="tab" id="tab1" for="one">PhoneNumber</label>
+    <label class="tab" id="tab2" for="two">Branch</label>
+  </div>
+  <div class="tab-panels">
+    <div class="tab-panel" id="tab-panel1">
+      <div class="row">
+        
+          <mat-form-field appearance="fill" class="col-lg-4 col-md-6 col-sm-12 ">
+            <mat-label>{{MainPortal.Lang['PhoneNumber']}}</mat-label>
+            <input matInput placeholder="PhoneNumber" [formControl]="PhoneNumberSearch" required>
+            <mat-error *ngIf="PhoneNumberSearch.hasError('required')">PhoneNumber Is Required</mat-error>
+          </mat-form-field>
+          <button mat-button color="accent" style="height: 36px; bottom: -17px;" (click)='SearchDeliveryByPhoneNumber()'
+            [disabled]="!PhoneNumberSearch.valid">{{MainPortal.Lang['Search']}}</button>
+        
+      </div>
+    </div>
+    <div class="tab-panel" id="tab-panel2">
+      <div class="row">
+      
+        <mat-form-field appearance="fill" class="col-lg-4 col-md-6 col-sm-12 ">
+          <mat-label>{{MainPortal.Lang['BranchName']}}</mat-label>
+          <mat-select [formControl]="BranchIdSearch">
+            <mat-option *ngFor="let B of OurservicesadminService.ListBranch" value="{{B.id}}">{{B.name}} | {{B.description}}
+            </mat-option>
+          </mat-select>
+          <mat-error *ngIf="BranchIdSearch.hasError('required')">Branch Is Required</mat-error>
+        </mat-form-field>
+        <button mat-button color="accent" style="height: 36px; bottom: -17px;" (click)='SearchDeliveryByBranch()'
+          [disabled]="!BranchIdSearch.valid">{{MainPortal.Lang['Search']}}</button>
+      
+      </div>
+    </div>
+    
+    <div class="row">
+      <div class="col-md-12">
+        <div class="table-responsive-lg table-responsive-md table-responsive-sm">
+    
+          <table class="table table-sm table-hover mytable">
+            <thead class="thead-light">
+              <tr>
+    
+                <th>
+                  {{MainPortal.Lang['UserName']}}
+                </th>
+                <th>
+                  {{MainPortal.Lang['Email']}}
+                </th>
+                <th>
+    
+                  {{MainPortal.Lang['PhoneNumber']}}
+                </th>
+                <th>
+                  {{MainPortal.Lang['NickName']}}
+                </th>
+                <th>
+                  {{MainPortal.Lang['Gender']}}
+                </th>
+                <th>
+    
+                  {{MainPortal.Lang['Block']}}
+                </th>
+    
+                <th>
+    
+                  {{MainPortal.Lang['Salary']}}
+                </th>
+                <th>
+    
+                  {{MainPortal.Lang['Password']}}
+                </th>
+                <th>
+    
+                  {{MainPortal.Lang['Map']}}
+    
+                </th>
+                <th> {{MainPortal.Lang['Edit']}}</th>
+                <th>{{MainPortal.Lang['Delete']}}</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody *ngFor="let Delievry of OurservicesadminService.ListDelivery">
+    
+    
+              <tr>
+    
+                <td>
+                  {{Delievry.userName}}
+                </td>
+                <td>
+                  {{Delievry.email}}
+                </td>
+                <td>
+                  {{Delievry.phoneNumber}}
+                </td>
+                <td>
+                  {{Delievry.nickName}}
+                </td>
+                <td>
+                  <button *ngIf='Delievry.gender' class="orange fluid ui button">
+                    <i class="fas fa-male"></i>
+                  </button>
+                  <button *ngIf='!Delievry.gender' class="yellow fluid ui button">
+                    <i class="fas fa-female"></i>
+                  </button>
+    
+    
+                </td>
+                <td>
+                  <button (click)='UpdateBlockUserForSuperUser(Delievry.id,Delievry.block)' *ngIf='Delievry.block'
+                    class="red fluid ui button">
+                    <i class="fas fa-lock"></i>
+                  </button>
+                  <button (click)='UpdateBlockUserForSuperUser(Delievry.id,Delievry.block)' *ngIf='!Delievry.block'
+                    class="green fluid ui button">
+                    <i class="fas fa-lock-open"></i>
+                  </button>
+                </td>
+                <td>
+                  <button (click)='ShowChangeSalary(Delievry)' *ngIf='Delievry.ShowChangeSalary'
+                    class="red fluid ui button">
+                    <i class="fas fa-dollar-sign"></i>
+                  </button>
+                  <button (click)='ShowChangeSalary(Delievry)' *ngIf='!Delievry.ShowChangeSalary'
+                    class="green fluid ui button">
+                    <i class="fas fa-dollar-sign"></i>
+                  </button>
+    
+                </td>
+                <td>
+                  <button (click)='ShowChangePassword(Delievry)' *ngIf='!Delievry.ShowChangePassword'
+                    class="blue fluid ui button">
+                    <i class="fas fa-key"></i>
+                  </button>
+                  <button (click)='ShowChangePassword(Delievry)' *ngIf='Delievry.ShowChangePassword'
+                    class="green fluid ui button">
+                    <i class="fas fa-key"></i>
+                  </button>
+                </td>
+    
+    
+    
+                <td>
+                  <button (click)='GetDeliveryLocationById(Delievry.id)' class="orange fluid ui button">
+                    <i class="fas fa-map-marked-alt"></i>
+                  </button>
+                </td>
+                <td>
+                  <button id="btn" (click)='Edit(Delievry)' class="green fluid ui button">
+                    <i style="color: white;" class="fas fa-edit"></i>
+                  </button>
+                </td>
+                <td>
+                  <button id="btn" (click)='DeleteDelivery(Delievry.id)' class="red fluid ui button">
+                    <i style="color: white;" class="fas fa-trash-alt"></i>
+                  </button>
+                </td>
+              </tr>
+              <tr>
+                <td *ngIf='Delievry.ShowChangePassword'></td>
+                <td *ngIf='Delievry.ShowChangePassword'>
+                  <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text" id="basic-addon1">{{MainPortal.Lang['New Password']}}</span>
+                    </div>
+                    <input type="text" [(ngModel)]='Delievry.NewPassword' class="form-control"
+                      placeholder="{{MainPortal.Lang['New Password']}}" aria-label="Password"
+                      aria-describedby="basic-addon1">
+                    <button (click)='EditPasswordUser(Delievry.id,Delievry.NewPassword)' type="button"
+                      class="btn btn-primary">{{MainPortal.Lang['Edit']}}</button>
+                  </div>
+                </td>
+                <td *ngIf='Delievry.ShowChangePassword'></td>
+                <td *ngIf='Delievry.ShowChangePassword'></td>
+                <td *ngIf='Delievry.ShowChangePassword'></td>
+                <td *ngIf='Delievry.ShowChangePassword'></td>
+                <td *ngIf='Delievry.ShowChangePassword'></td>
+                <td *ngIf='Delievry.ShowChangePassword'></td>
+                <td *ngIf='Delievry.ShowChangePassword'></td>
+                <td *ngIf='Delievry.ShowChangePassword'></td>
+                <td *ngIf='Delievry.ShowChangePassword'></td>
+              </tr>
+              <tr>
+                <td *ngIf='Delievry.ShowChangeSalary'></td>
+                <td *ngIf='Delievry.ShowChangeSalary'>
+                  <div class="input-group mb-12">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text" id="basic-addon1">{{MainPortal.Lang['New Salary']}}</span>
+                    </div>
+                    <input type="number" [(ngModel)]='Delievry.NewSalary' class="form-control"
+                      placeholder="{{MainPortal.Lang['New Salary']}}" aria-label="Salary" aria-describedby="basic-addon1">
+                    <button (click)='UpdateSalaryUser(Delievry.id,Delievry.NewSalary)' type="button"
+                      class="btn btn-primary">{{MainPortal.Lang['Edit']}}</button>
+                  </div>
+                </td>
+                <td *ngIf='Delievry.ShowChangeSalary'></td>
+                <td *ngIf='Delievry.ShowChangeSalary'></td>
+                <td *ngIf='Delievry.ShowChangeSalary'></td>
+                <td *ngIf='Delievry.ShowChangeSalary'></td>
+                <td *ngIf='Delievry.ShowChangeSalary'></td>
+                <td *ngIf='Delievry.ShowChangeSalary'></td>
+                <td *ngIf='Delievry.ShowChangeSalary'></td>
+                <td *ngIf='Delievry.ShowChangeSalary'></td>
+                <td *ngIf='Delievry.ShowChangeSalary'></td>
+              </tr>
+            </tbody>
+          </table>
+    
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

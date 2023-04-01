@@ -1,0 +1,19 @@
+
+
+<div class="page-content" *ngIf='OurservicespublicService.ListTrendingProductByCategory.length > 0'>
+    <div class="card" *ngFor ='let P of OurservicespublicService.ListTrendingProductByCategory'
+     style="background-image: url('{{OurservicespublicService.URLIMG + P.image}}');" data-aos="zoom-in-up">
+        <div class="content">
+            <h2 class="title">{{P.name}}</h2>
+            <p class="copy">
+                {{P.price}} $
+            </p>
+            <button class="product-btn" (click) = "Details(P)">Details</button>
+        </div>
+    </div>
+</div>
+
+
+<div *ngIf='OurservicespublicService.ListTrendingProductByCategory.length <= 0'>
+    Empty
+</div>

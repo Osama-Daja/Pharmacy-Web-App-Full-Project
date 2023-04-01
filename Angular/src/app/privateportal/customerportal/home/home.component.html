@@ -1,0 +1,49 @@
+
+
+
+            <div class="row row-odd">
+                <p> {{MainPortal.Lang['Special Products']}}</p>
+            </div>
+            <div class="row special-product" *ngFor = 'let P of OurservicespublicService.ListTrendingProductTop3'>
+                <br><br><br>
+                <div class="col-md-6" style="    margin-bottom: 2rem;">
+                    <div class="img_producto_container" >
+                        <img class="dslc-lightbox-image img_producto"
+                            [src]='OurservicespublicService.URLIMG + P.image'>
+                    </div>
+                </div>
+                <div class="col-md-6 special-product-details" >
+                    <div class="col-md-12">
+                        <h3>
+                            {{P.name}}
+                        </h3>
+                        <p>
+                            {{P.description}}
+                        </p>
+                        <p>
+                            <strong>{{P.price}} $</strong>
+                        </p>
+                    </div>
+
+
+                </div>
+                <div style="clear: both;"></div>
+                <br><br><br>
+            </div>
+
+            <div class="row row-even">
+                <p> {{MainPortal.Lang['Trending Product']}}</p>
+            </div>
+
+            <div class="page-content">
+                <div class="card" *ngFor ='let P of OurservicespublicService.ListAllTrendingProduct'
+                 style="background-image: url('{{OurservicespublicService.URLIMG + P.image}}');" data-aos="zoom-in-up">
+                    <div class="content">
+                        <h2 class="title">{{P.name}}</h2>
+                        <p class="copy">
+                            {{P.price}} $
+                        </p>
+                        <button class="product-btn" (click) = "Details(P)">Details</button>
+                    </div>
+                </div>
+            </div>

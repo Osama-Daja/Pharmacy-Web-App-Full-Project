@@ -1,0 +1,29 @@
+<div class="row">
+    <form method="post" [formGroup]='reportForm' (submit)='Submit()'>
+
+        <mat-form-field appearance="fill" class="col-md-12 ">
+            <mat-label>Enter a Text</mat-label>
+            <input matInput placeholder="Text" formControlName="Text" required>
+            <mat-error *ngIf="reportForm.controls.Text.hasError('required')">Text Is Required</mat-error>
+        </mat-form-field>
+
+       
+
+        
+            <div style="display: flex; justify-content: space-between;" fxLayoutAlign="start center">
+
+                <div *ngFor="let star of stars"  >
+                    <i class="fas fa-star"  value="star.id" (click)="selectStar(star.id)"></i>
+                </div>
+            </div>
+        
+        <mat-form-field appearance="fill" class="col-lg-4 col-md-6 col-sm-12 " hidden>
+            <mat-label>Enter Order Id</mat-label>
+            <input matInput placeholder="Produce Date" formControlName="OrderId" required readonly>
+        </mat-form-field>
+
+        <div class="col-md-12">
+            <button mat-button color="accent" type="submit" [disabled]="reportForm.invalid">Submit</button>
+        </div>
+    </form>
+</div>
