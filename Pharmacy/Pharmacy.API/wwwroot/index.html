@@ -1,0 +1,115 @@
+<!DOCTYPE html><html lang="en"><head>
+  <meta charset="utf-8">
+  <title>Tahaluf Pharmacy</title>
+  <base href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+
+
+
+  <style>:root{--blue:#007bff;--indigo:#6610f2;--purple:#6f42c1;--pink:#e83e8c;--red:#dc3545;--orange:#fd7e14;--yellow:#ffc107;--green:#28a745;--teal:#20c997;--cyan:#17a2b8;--white:#fff;--gray:#6c757d;--gray-dark:#343a40;--primary:#007bff;--secondary:#6c757d;--success:#28a745;--info:#17a2b8;--warning:#ffc107;--danger:#dc3545;--light:#f8f9fa;--dark:#343a40;--breakpoint-xs:0;--breakpoint-sm:576px;--breakpoint-md:768px;--breakpoint-lg:992px;--breakpoint-xl:1200px;--font-family-sans-serif:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";--font-family-monospace:SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;}*,::after,::before{box-sizing:border-box;}html{font-family:sans-serif;line-height:1.15;-webkit-text-size-adjust:100%;-webkit-tap-highlight-color:transparent;}body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";font-size:1rem;font-weight:400;line-height:1.5;color:#212529;text-align:left;background-color:#fff;}@media print{*,::after,::before{text-shadow:none!important;box-shadow:none!important;}@page {size:a3;}body{min-width:992px!important;}}</style><link rel="stylesheet" href="./assets/CSS/bootstrap-4.5.3-dist/css/bootstrap.min.css" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="./assets/CSS/bootstrap-4.5.3-dist/css/bootstrap.min.css"></noscript>
+
+  <link rel="stylesheet" href="./assets/CSS/fontawesome-free-5.15.1-web/css/all.min.css" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="./assets/CSS/fontawesome-free-5.15.1-web/css/all.min.css"></noscript>
+  <style>@import url(https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic&subset=latin);*,:after,:before{-webkit-box-sizing:inherit;box-sizing:inherit;}html{-webkit-box-sizing:border-box;box-sizing:border-box;}html{line-height:1.15;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;}body{margin:0;}body,html{height:100%;}html{font-size:14px;}body{margin:0;padding:0;overflow-x:hidden;min-width:320px;background:#fff;font-family:Lato,'Helvetica Neue',Arial,Helvetica,sans-serif;font-size:14px;line-height:1.4285em;color:rgba(0,0,0,.87);font-smoothing:antialiased;}body ::-webkit-scrollbar{-webkit-appearance:none;width:10px;height:10px;}body ::-webkit-scrollbar-track{background:rgba(0,0,0,.1);border-radius:0;}body ::-webkit-scrollbar-thumb{cursor:pointer;border-radius:5px;background:rgba(0,0,0,.25);-webkit-transition:color .2s ease;transition:color .2s ease;}body ::-webkit-scrollbar-thumb:window-inactive{background:rgba(0,0,0,.15);}body ::-webkit-scrollbar-thumb:hover{background:rgba(128,135,139,.8);}</style><link rel="stylesheet" href="./assets/CSS/Semantic-UI-CSS-master/semantic.min.css" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="./assets/CSS/Semantic-UI-CSS-master/semantic.min.css"></noscript> 
+
+  <!-- OlMap -->
+   <link rel="stylesheet" href="./assets/OlMap/ol.css" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="./assets/OlMap/ol.css"></noscript>
+
+   <!-- Dashboard -->
+   <style>:root{--main-color:#f13140;--color-dark:#1d2231;--text-gray:#8390a2;--white:#fff;}</style><link rel="stylesheet" href="./assets/CSS/Dashboard/chat.css" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="./assets/CSS/Dashboard/chat.css"></noscript>
+   <style>:root{--main-color:#f13140;--color-dark:#1d2231;--text-gray:#8390a2;--white:#fff;}*{padding:0;margin:0;box-sizing:border-box;list-style-type:none;text-decoration:none;font-family:"Poppins", sans-serif;}body{margin:0 auto;}@media screen and (max-width: 1200px){}@media screen and (max-width: 768px){}</style><link rel="stylesheet" href="./assets/CSS/Dashboard/dash.css" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="./assets/CSS/Dashboard/dash.css"></noscript>
+
+   <!-- Table -->
+   <style>:root{--pink:#f13140;--color-dark:#1d2231;--gray:#eee;--white:#fff;--green:#85ce36;--blue:#31588d;--table-header:#e72d3c;}</style><link rel="stylesheet" href="./assets/CSS/Table-bootstrap/table-bootstrap.css" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="./assets/CSS/Table-bootstrap/table-bootstrap.css"></noscript>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
+   <!-- Auth -->
+   <style>@import url(https://fonts.googleapis.com/css?family=Vibur);*,*:after,*:before{box-sizing:border-box;transition:0.3s;}</style><link rel="stylesheet" href="./assets/Public/login/CSS/Auth.css" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="./assets/Public/login/CSS/Auth.css"></noscript>
+
+   <!-- Home -->
+   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+   <style>:root{--main-color:#f13140;--color-dark:#1d2231;--text-gray:#8390a2;--white:#fff;--blue-light:#2cc3ec;--sky-blue:#3498db;--green-light:#64e09d;}</style><link rel="stylesheet" href="./assets/Public/Home/home.css" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="./assets/Public/Home/home.css"></noscript>
+   <style>@import url("https://fonts.googleapis.com/css?family=Cardo:400i|Rubik:400,700&display=swap");:root{--d:700ms;--e:cubic-bezier(0.19, 1, 0.22, 1);--font-sans:"Rubik", sans-serif;--font-serif:"Cardo", serif;--main-color:#f13140;}*{box-sizing:border-box;}</style><link rel="stylesheet" href="./assets/Public/Home/cards.css" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="./assets/Public/Home/cards.css"></noscript>
+   <link rel="stylesheet" href="./assets/Public/Home/owl.carousel.min.css" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="./assets/Public/Home/owl.carousel.min.css"></noscript>
+   
+<style>.mat-typography{font:400 14px/20px Roboto,Helvetica Neue,sans-serif;letter-spacing:normal;}body,html{height:100%;}body{margin:0;font-family:Roboto,Helvetica Neue,sans-serif;}</style><link rel="stylesheet" href="styles.556042eefacc4a53f960.css" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="styles.556042eefacc4a53f960.css"></noscript></head>
+<body class="mat-typography">
+  <app-root></app-root>
+
+
+
+  <script>
+
+    function usericon(){
+        $('.user-icon').click(function (e) {
+        e.stopPropagation(); 
+        const toggleMenu = document.querySelector('.profile-menu');
+        toggleMenu.classList.toggle('active-profile-menu');
+
+        if ($('.notification-ul').hasClass('active-notification-ul') == true) {
+            $('.notification-ul').removeClass('active-notification-ul');
+        }
+
+        if ($('.chat').hasClass('chat-active') == true) {
+            $('.chat').removeClass('chat-active')
+        }
+    });
+    }
+
+    function msg(){
+      $('#msg').click(function (e) {
+        e.stopPropagation(); 
+
+        const chat = document.querySelector('.chat');
+        chat.classList.toggle('chat-active');
+
+        if ($('.profile-menu').hasClass('active-profile-menu') == true) {
+            $('.profile-menu').removeClass('active-profile-menu')
+        }
+
+        if ($('.notification-ul').hasClass('active-notification-ul') == true) {
+            $('.notification-ul').removeClass('active-notification-ul')
+        }
+    });
+    }
+
+    function Notifi(){
+      $('.fa-bell').click(function (e) {
+        e.stopPropagation(); 
+
+        $('active-profile-menu').removeClass('active-profile-menu');
+        const noti = document.querySelector('.notification-ul');
+        noti.classList.toggle('active-notification-ul');
+
+        if ($('.profile-menu').hasClass('active-profile-menu') == true) {
+            $('.profile-menu').removeClass('active-profile-menu')
+        }
+
+        if ($('.chat').hasClass('chat-active') == true) {
+            $('.chat').removeClass('chat-active')
+        }
+    });
+    }
+  </script>
+  
+  <script src="./assets/OlMap/ol.js"></script>
+  <script src="./assets/CSS/jQuery/JQ.main.js"></script>    
+  <script src="./assets/CSS/bootstrap-4.5.3-dist/js/bootstrap.min.js"></script>  
+  <script src="./assets/CSS/Dashboard/dash.js"></script>  
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init();
+  </script>
+  <!-- LogIn -->
+  <script src="./assets/Public/login/login.js"></script>
+
+  <!-- Home -->
+  <script src="./assets/Public/Home/home.js"></script>
+ <script src="./assets/Public/Home/owl.carousel.min.js"></script>
+ <script src="./assets/Public/Home/cat-slider.js"></script>
+
+
+<script src="runtime.ad25438bf23086b7b77d.js" defer></script><script src="polyfills.a18453aff15648f4be1e.js" defer></script><script src="main.c5b9ef772cca04220d90.js" defer></script>
+
+</body></html>

@@ -1,0 +1,90 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="wwwroot\**" />
+    <Content Remove="wwwroot\**" />
+    <EmbeddedResource Remove="wwwroot\**" />
+    <None Remove="wwwroot\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="wwwroot\assets\AboutUs\Tahaluf.jpeg" />
+    <Content Include="wwwroot\assets\AboutUs\Tahaluf.txt" />
+    <Content Include="wwwroot\assets\AboutUs\TahalufPostion.txt" />
+    <Content Include="wwwroot\assets\Branch\23\IMG\Product\Alcohol Wipes\Alcohol Wipes.jpg" />
+    <Content Include="wwwroot\assets\Branch\23\IMG\Product\Baby Bottle\Baby Bottle.jpg" />
+    <Content Include="wwwroot\assets\Branch\23\IMG\Product\Baby Muesli\Baby Muesli.jpg" />
+    <Content Include="wwwroot\assets\Branch\23\IMG\Product\CleanEars Kids\CleanEars Kids.jpg" />
+    <Content Include="wwwroot\assets\Branch\23\IMG\Product\Ear Cleansing\Ear Cleansing.jpg" />
+    <Content Include="wwwroot\assets\Branch\23\IMG\Product\Eye Drops\Eye Drops.jpg" />
+    <Content Include="wwwroot\assets\Branch\23\IMG\Product\Face Mask\Face Mask.jpg" />
+    <Content Include="wwwroot\assets\Branch\23\IMG\Product\Fish Oil\Fish Oil.jpg" />
+    <Content Include="wwwroot\assets\Branch\23\IMG\Product\Gaviscon\Gaviscon.jpg" />
+    <Content Include="wwwroot\assets\Branch\23\IMG\Product\Hand Sanitiser Spray\Hand Sanitiser Spray.jpg" />
+    <Content Include="wwwroot\assets\Branch\23\IMG\Product\Hand Sanitiser\Hand Sanitiser.jpg" />
+    <Content Include="wwwroot\assets\Branch\23\IMG\Product\Kids Bottle\Kids Bottle.jpg" />
+    <Content Include="wwwroot\assets\Branch\23\IMG\Product\Mim’s Gentle Milk\Mim’s Gentle Milk.jpg" />
+    <Content Include="wwwroot\assets\Branch\23\IMG\Product\Multi Vitamin\Multi Vitamin.jpg" />
+    <Content Include="wwwroot\assets\Branch\23\IMG\Product\Nestle NAN\Nestle NAN.jpg" />
+    <Content Include="wwwroot\assets\Branch\23\IMG\Product\Omega 3\Omega 3.jpg" />
+    <Content Include="wwwroot\assets\Branch\23\IMG\Product\Optive Gel Drops\Optive Gel Drops.jpg" />
+    <Content Include="wwwroot\assets\Branch\23\IMG\Product\Panadol Children\Panadol Children.jpg" />
+    <Content Include="wwwroot\assets\Branch\23\IMG\Product\Panadol Extra\Panadol Extra.jpg" />
+    <Content Include="wwwroot\assets\Branch\23\IMG\Product\paracetamol\Paracetamol.jpg" />
+    <Content Include="wwwroot\assets\Branch\23\IMG\Product\Refresh Tears\Refresh Tears.jpg" />
+    <Content Include="wwwroot\assets\Branch\23\IMG\Product\Rennie\Rennie.jpg" />
+    <Content Include="wwwroot\assets\Branch\23\IMG\Product\Thermometer\Thermometer.jpg" />
+    <Content Include="wwwroot\assets\Branch\23\IMG\Product\Vitamin C\Vitamin  C.jpg" />
+    <Content Include="wwwroot\assets\Branch\23\IMG\Product\Vitamin D\Omega 3.jpg" />
+    <Content Include="wwwroot\assets\Branch\29\IMG\Product\Alcohol Wipes\Alcohol Wipes.jpg" />
+    <Content Include="wwwroot\assets\Branch\29\IMG\Product\Baby Bottle\Baby Bottle.jpg" />
+    <Content Include="wwwroot\assets\Branch\29\IMG\Product\Baby Muesli\Baby Muesli.jpg" />
+    <Content Include="wwwroot\assets\Branch\29\IMG\Product\CleanEars Kids\CleanEars Kids.jpg" />
+    <Content Include="wwwroot\assets\Branch\29\IMG\Product\Ear Cleansing\Ear Cleansing.jpg" />
+    <Content Include="wwwroot\assets\Branch\29\IMG\Product\Eye Drops\Eye Drops.jpg" />
+    <Content Include="wwwroot\assets\Branch\29\IMG\Product\Face Mask\Face Mask.jpg" />
+    <Content Include="wwwroot\assets\Branch\29\IMG\Product\Fish Oil\Fish Oil.jpg" />
+    <Content Include="wwwroot\assets\Branch\29\IMG\Product\Gaviscon\Gaviscon.jpg" />
+    <Content Include="wwwroot\assets\Branch\29\IMG\Product\Hand Sanitiser Spray\Hand Sanitiser Spray.jpg" />
+    <Content Include="wwwroot\assets\Branch\29\IMG\Product\Hand Sanitiser\Hand Sanitiser.jpg" />
+    <Content Include="wwwroot\assets\Branch\29\IMG\Product\Kids Bottle\Kids Bottle.jpg" />
+    <Content Include="wwwroot\assets\Branch\29\IMG\Product\Mim’s Gentle Milk\Mim’s Gentle Milk.jpg" />
+    <Content Include="wwwroot\assets\Branch\29\IMG\Product\Multi Vitamin\Multi Vitamin.jpg" />
+    <Content Include="wwwroot\assets\Branch\29\IMG\Product\Nestle NAN\Nestle NAN.jpg" />
+    <Content Include="wwwroot\assets\Branch\29\IMG\Product\Omega 3\Vitamin D.jpg" />
+    <Content Include="wwwroot\assets\Branch\29\IMG\Product\Optive Gel Drops\Optive Gel Drops.jpg" />
+    <Content Include="wwwroot\assets\Branch\29\IMG\Product\Panadol Children\Panadol Children.jpg" />
+    <Content Include="wwwroot\assets\Branch\29\IMG\Product\Panadol Extra\Panadol Extra.jpg" />
+    <Content Include="wwwroot\assets\Branch\29\IMG\Product\paracetamol\Paracetamol.jpg" />
+    <Content Include="wwwroot\assets\Branch\29\IMG\Product\Rennie\Rennie.jpg" />
+    <Content Include="wwwroot\assets\Branch\29\IMG\Product\Thermometer\Thermometer.jpg" />
+    <Content Include="wwwroot\assets\Branch\29\IMG\Product\Vitamin C\Vitamin  C.jpg" />
+    <Content Include="wwwroot\assets\Branch\29\IMG\Product\Vitamin D\Vitamin D.jpg" />
+    <Content Include="wwwroot\assets\Category\Health\first-aid-kit (1).png" />
+    <Content Include="wwwroot\assets\Category\Medicines\pharmacy.png" />
+    <Content Include="wwwroot\assets\Category\Mum And Baby\maternity.png" />
+    <Content Include="wwwroot\assets\Category\Skin Care\cream.png" />
+    <Content Include="wwwroot\assets\Category\Vitamins And Supplements\vitamins.png" />
+    <Content Include="wwwroot\assets\Category\Weight Loss And Fitness\nutrition.png" />
+    <Content Include="wwwroot\assets\Data\67\IMG\ImageUser\pexels-photo-1680172.jpeg" />
+    <Content Include="wwwroot\assets\Slider\MicrosoftTeams-image %281%29.png" />
+    <Content Include="wwwroot\assets\Slider\MicrosoftTeams-image %282%29.png" />
+    <Content Include="wwwroot\assets\Slider\MicrosoftTeams-image.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="NetTopologySuite" Version="2.3.0" />
+    <PackageReference Include="NetTopologySuite.IO.GeoJSON" Version="2.0.4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Pharmacy.Core\Pharmacy.Core.csproj" />
+    <ProjectReference Include="..\Pharmacy.Infra\Pharmacy.Infra.csproj" />
+  </ItemGroup>
+
+
+</Project>
